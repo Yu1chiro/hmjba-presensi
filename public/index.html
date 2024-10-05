@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+  
+
+<section class="main-content bg-center bg-no-repeat bg-cover  bg-gray-700 bg-blend-multiply" style="background-image: url('/logo.png');">
+  <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+      <div class="mobile">
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Selamat Datang di Halaman Presensi HMJ BAHASA ASING</h1>
+          <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Jika anda adalah admin silahkan login dan jika anda adalah user silahkan menuju presensi</p>
+          <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
+              <a href="/Oauth/Dashboard/Dashboard.html" class="inline-flex margin justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                  Login
+                  <i class="fa-regular fa-user ms-3"></i>
+              </a>
+              <a href="/Presensi/Inspiration.html" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                  Presensi
+                  <i class="fa-regular fa-pen-to-square ms-3"></i>
+              </a>
+              
+          </div>
+      </div>
+  </div>
+  <footer class="text-white text-center py-4 w-full fixed bottom-0">
+    <p>&copy; HMJ Bahasa Asing 2024 || Develop by PBJ</p>
+  </footer>
+</section>
+<style>
+  .margin {
+    margin-right: 1rem;
+  }
+   @media screen and (max-width: 640px) {
+    .margin {
+      margin-right:0;
+    }
+    .main-content {
+      height: 100vh;
+    }
+    .mobile {
+      margin-top: 3rem;;
+    }
+   }
+</style>
+
+</body>
+</html>

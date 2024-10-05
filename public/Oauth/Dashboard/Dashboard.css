@@ -1,0 +1,146 @@
+/* Container for the tooltip */
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Tooltip text */
+.tooltip-container .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border-radius: 5px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    margin-bottom:2rem;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: 2px solid black;
+    transition:0.5s ease;
+}
+
+/* Show the tooltip text when hovering */
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:rgb(31,41,55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.swall-custom {
+    background-color:green!important;
+    color:white;
+}
+.swall-cancel {
+    background-color:red!important;
+    color:white;
+}
+
+#loadingOverlay2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+#swal-input1 {
+    margin-left:0!important;
+}
+#swal-input2 {
+    margin-left:0!important;
+}
+#swal-input3 {
+    margin-left:0!important;
+}
+
+#loading {
+    display:none;
+}
+#content {
+    display:none;
+}
+#content2 {
+    display:none;
+}
+#loading-submit {
+    display:none;
+}
+/* Loading Animation */
+.dot {
+    width: 12px;
+    height: 12px;
+    margin: 5px;
+    background-color:#fff!important;
+    border-radius: 50%;
+    display: inline-block;
+    animation: dotPulse 1.5s infinite ease-in-out;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.mobile {
+    display:none;
+}
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+#accordion-collapse {
+    margin:0 2rem;
+}
+@keyframes dotPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0.5);
+        opacity: 0.3;
+    }
+}
+@media screen and (max-width: 640px) {
+    .dekstop {
+        display:none!important;
+    }
+    .hidden {
+        display:none!important;
+    }
+    .mobile {
+        display:block;
+    }
+    .input-timer {
+        margin:0 1rem;
+    }
+    #accordion-collapse {
+        margin:0 2rem;
+    }
+    #swal-input1 {
+        margin-left:0!important;
+    }
+    #swal-input2 {
+        margin-left:0!important;
+    }
+}

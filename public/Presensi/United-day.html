@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presensi United Day</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="Inpsi.css">
+    <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-900">
+    <h1 class="text-white font-bold text-2xl py-4 text-center" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); z-index: 100;">PRESENSI INSPIRATION</h1>
+    <h2 id="countdown"></h2>
+    <div class="content-img">
+      <img src="/logo.png" class="gradient-border rounded-full" alt="">
+    </div>
+    <h1 id="alert-text" class="mt-5 text-red-700 font-bold text-2xl text-center">MOHON MAAF PRESENSI TIDAK DAPAT DILAKUKAN DI MODE LAPTOP/PC <br> SILAHKAN GUNAKAN HANDPHONE ANDA TERIMAKASIH</h1>
+
+<main>
+    <div id="main-content" class="container-lg py-5">
+        <div class="form-container">
+            <form class="max-w-sm mx-auto">
+                <div class="mb-5">
+                  <label for="name" class="block form-label mb-2 text-sm font-bold text-black">Nama Lengkap : </label>
+                  <input type="text" id="Name" class="bg-white border border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nama Lengkap Mahasiswa" required />
+                </div>
+                <div class="mb-5">
+                  <label for="NIM" class="block mb-2 text-sm font-bold text-black">NIM Mahasiswa : </label>
+                  <input type="number" id="Nim" class="bg-white border border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nim Mahasiswa" required />
+                </div>
+                <div class="mb-5">
+                  <label for="program-studi" class="block mb-2 text-sm font-bold text-black">Program Studi : </label>
+                  <input type="text" id="Prodi" class="bg-white border border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="contoh : Pendidikan Bahasa Inggris" required />
+                </div>
+                <div class="mb-5">
+                  <label for="Jabatan" class="block mb-2 text-sm font-bold text-black">Jabatan : </label>
+                  <input type="text" id="Jabatan" class="bg-white border border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Jabatan" required />
+                </div>
+                <button style="box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);" type="button" id="submit-data" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-bold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Kirim Presensi</button>
+                <div id="status-message" class="mt-3"></div>
+
+              </form>
+
+            </div>
+    </div>
+    <!--  -->
+    <div class="container-lg py-5" id="hidden-content">
+      <div class="form-container">
+        <form id="tambah-data-form" class="max-w-sm mx-auto">
+            <div class="mb-5">
+              <label for="name" class="block mb-2 text-sm font-bold text-black">Nama Lengakap : </label>
+              <input type="text" id="nama" class="bg-white border border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nama Lengkap Anda" required />
+            </div>
+            <div class="mb-5">
+              <label for="NIM" class="block mb-2 text-sm font-bold text-black">NIM Mahasiswa : </label>
+              <input type="number" id="nim" class="bg-white border border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nim Mahasiswa Anda" required />
+            </div>
+            <div class="mb-5">
+              <label for="program-studi" class="block mb-2 text-sm font-bold text-black">Program Studi : </label>
+              <input type="text" id="program-studi" class="bg-white border border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="contoh : Pendidikan Bahasa Inggris" required />
+            </div>
+            <div class="mb-5">
+              <label for="Jabatan" class="block mb-2 text-sm font-bold text-black">Jabatan : </label>
+              <input type="text" id="jabatan" class="bg-white border border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Jabatan Anda" required />
+            </div>
+            <div class="mb-5">
+              <label for="Keterangan" class="block mb-2 text-sm font-bold text-black">Keterangan :</label>
+              <div class="flex items-center mb-3">
+                  <input id="Terlambat" type="radio" value="Terlambat" name="status" class="w-4 h-4 text-blue-600 bg-white border-gray-300 focus:ring-blue-500">
+                  <label for="Terlambat" class="ms-2 text-sm font-bold text-black300">Terlambat</label>
+              </div>
+              <div class="flex items-center mb-3">
+                  <input id="Izin" type="radio" value="Izin" name="status" class="w-4 h-4 text-blue-600 bg-white border-gray-300 focus:ring-blue-500">
+                  <label for="Izin" class="ms-2 text-sm font-bold text-black300">Izin</label>
+              </div>
+              <div class="flex items-center">
+                  <input id="Sakit" type="radio" value="Sakit" name="status" class="w-4 h-4 text-blue-600 bg-white border-gray-300 focus:ring-blue-500">
+                  <label for="Sakit" class="ms-2 text-sm font-bold text-black300">Sakit</label>
+              </div>
+          </div>          
+            <div class="mb-5">
+            <label for="message" class="block mb-2 text-sm font-bold text-black">Alasan : </label>
+            <textarea id="alasan" rows="4" class="block p-2.5 w-full text-sm text-black bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Alasan Mahasiswa Terlambat, Sakit, Izin"></textarea>
+            </div>
+            <button style="box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);" type="button" id="tambah-data-mahasiswa" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-bold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Kirim Presensi</button>
+          </form>
+      </div>
+        </div>
+  
+      </main>
+      <div id="default-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+        <div class="relative w-full h-full max-w-2xl md:h-auto">
+          <!-- Modal content -->
+          <div class="relative bg-white rounded-lg shadow">
+            <!-- Header -->
+            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+              <h3 class="text-xl font-semibold text-red-600">
+                ATTENTION !<br>
+                <span class="text-lg font-semibold text-black">
+                  Baca dulu biar status keterangan presensi mu ga error lagi
+                </span>
+                <br>
+                <span class="text-sm text-black">Version 0.1 (error fixed)</span>
+              </h3>
+            </div>
+            <!-- Body -->
+            <div class="p-6 space-y-6 max-h-80 overflow-y-auto">
+              <p class="text-left text-black text-md">Baca dulu deh intinya biar Attention nya bisa di close 😁</p>
+              <p class="text-left text-black text-md">Dikarenakan terdapat beberapa mahasiswa yang mengalami masalah saat mengisi presensi khususnya pada status kehadiran, sebagai developer saya menemukan masalah yakni terletak pada tidak akuratnya lokasi/koordinat yg di dapatkan oleh sistem pada GPS/Lokasi user, untuk mengatasi hal tersebut maka, pahamilah intruksi pengisian presensi berikut ini : </p>
+              <ol class="list-decimal">
+                <li class="text-left text-black text-md mb-2">Sebelum mengisi presensi, mahasiswa tidak perlu menyalakan GPS/lokasi secara manual jika anda terlanjur menyalakan GPS/lokasi sebelumnya non aktifkan terlebih dahulu. GPS akan otomatis aktif saat Anda mengirim presensi, ditandai dengan munculnya notifikasi "izinkan akses lokasi". Hal ini bertujuan untuk mendapatkan akses terbaru koordinat lokasi anda berada</li>
+                <li class="text-left text-black text-md mb-2">Pastikan anda sudah berada di FBS ketika mengisi presensi, karena sistem presensi menggunakan koordinat lokasi anda sebagai status kehadiran pada sistem</li>
+                <li class="text-left text-black text-md mb-2">Selalu gunakan browser yg tepat seperti chrome dan browser pendukung lainnya</li>
+                <li class="text-left text-black text-md mb-2">Jika anda sudah mengikuti petunjuk pertama namun keterangan status presensi anda <span class="text-red-600">Tidak Hadir</span> anda bisa mematikan secara manual Gps anda terlebih dahulu kemudian melakukan hapus data cookie pada browser anda, dengan mengklik intruksi berikut <a href="#" class="text-white font-semibold border py-1 px-1 rounded bg-green-600" id="delete-cookie">Intruksi</a>
+                  setelah menghapus data cookie pada browser anda bisa mengirim ulang presensi</li>
+                <li class="text-left text-black text-md mb-2">Pastikan selalu jujur dalam mengisi presensi sistem otomatis mendeteksi device yg anda gunakan</li>
+                <li class="text-left text-black text-md mb-2">Kenapa hal ini penting? kasihan juga sekretarisnya biar ga repot lagi edit manual data presensinya 😁 terimakasih sudah membaca dan memahami intruksinya selamat mengisi  presensi 😁</li>
+              </ol>
+            </div>
+            <!-- Footer -->
+            <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+              <button  id="understand-button" data-modal-hide="default-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Oke Aku Ngertii Wii</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- Modal -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var resetPermissionLink = document.getElementById('delete-cookie');
+  if (resetPermissionLink) {
+      resetPermissionLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Array gambar - ganti URL ini dengan URL gambar Anda sendiri
+          const images = [
+              '/guide/1.png',
+              '/guide/2.png',
+              '/guide/3.png',
+              '/guide/4.png',
+          ];
+          
+          let currentImageIndex = 0;
+
+          const showNextImage = () => {
+              if (currentImageIndex < images.length) {
+                  Swal.fire({
+                      imageUrl: images[currentImageIndex],
+                      imageAlt: `Slide ${currentImageIndex + 1}`,
+                      showCancelButton: true,
+                      showConfirmButton: currentImageIndex < images.length - 1,
+                      confirmButtonText: 'Lanjut',
+                      cancelButtonText: 'Tutup',
+                      customClass: {
+                          image: 'swal-image',
+                           confirmButton: 'custom-confirm-button', // Kelas untuk tombol "Lanjut"
+                          cancelButton: 'custom-cancel-button'
+                      }
+                  }).then((result) => {
+                      if (result.isConfirmed) {
+                          currentImageIndex++;
+                          showNextImage();
+                      }
+                  });
+              }
+          };
+          showNextImage();
+      });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Mendapatkan elemen modal
+    var modalElement = document.getElementById('default-modal');
+    
+    // Memastikan modal diinisialisasi dengan benar menggunakan Flowbite
+    var modal = new window.Modal(modalElement, {
+        backdrop: 'static',  // Modal tidak bisa ditutup dengan mengklik di luar modal
+        keyboard: false      // Modal tidak bisa ditutup dengan tombol escape
+    });
+
+    // Memeriksa status localStorage
+    if (!localStorage.getItem('version1')) {
+        // Menampilkan modal hanya jika user belum mengerti
+        modal.show();
+    }
+
+    // Menangani tombol "Mengerti"
+    var understandButton = document.getElementById('understand-button'); // Tombol "Mengerti"
+    
+    // Awalnya sembunyikan tombol "Mengerti"
+    understandButton.style.display = 'none';
+
+    // Mendapatkan elemen modal yang bisa di-scroll
+    var modalContent = document.querySelector('#default-modal .max-h-80');
+
+    // Event listener untuk mendeteksi scroll pada modal
+    modalContent.addEventListener('scroll', function() {
+        // Cek apakah pengguna sudah mencapai bagian bawah modal
+        if (modalContent.scrollTop + modalContent.clientHeight >= modalContent.scrollHeight) {
+            // Tampilkan tombol "Mengerti" ketika sudah scroll sampai bawah
+            understandButton.style.display = 'inline-block';
+        }
+    });
+
+    // Ketika tombol "Mengerti" diklik
+    understandButton.addEventListener('click', function() {
+        // Simpan status di localStorage bahwa user sudah mengerti
+        localStorage.setItem('version1', 'true');
+        modal.hide();  // Tutup modal
+    });
+});
+
+
+</script>
+<style>
+  .gradient-border {
+   position: relative;
+   display: inline-block;
+   border-radius: 50%;
+   padding: 5px; /* Adjust padding to control border width */
+   background: linear-gradient(to bottom right, #4ade80, #2563eb); /* Tailwind gradient from green-400 to blue-600 */
+ }
+
+ .gradient-border img {
+   display: block;
+   border-radius: 50%;
+   width: 100%;
+   height: auto;
+   background-clip: padding-box;
+ }
+ .swal-image {
+ display: block;
+ border-radius:5px;
+ margin-left: 2rem;
+ margin-right: auto;
+ max-width: 100%; /* Pastikan gambar tidak melampaui lebar maksimal */
+ height: auto; /* Menjaga rasio gambar */
+}
+.custom-confirm-button {
+ background-color: #4CAF50; /* Warna hijau */
+ color: white;
+}
+
+/* Gaya untuk tombol "Tutup" */
+.custom-cancel-button {
+ background-color: #f44336; /* Warna merah */
+ color: white;
+}
+</style>
+
+<script type="module" src="PresensiJS/UdayJS/time.js"></script>
+<script type="module" src="PresensiJS/UdayJS/Uday1.js"></script>
+<script type="module" src="PresensiJS/UdayJS/Uday2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+</body>
+</html>

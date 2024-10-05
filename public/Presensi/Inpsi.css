@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+@font-face {
+  font-family: 'Habanero';
+  src: url('/Habanero.ttf') format('truetype');
+}
+.loading::after {
+  content: "⏳";
+  display: inline-block;
+  margin-left: 10px;
+  animation: spin 1s linear infinite;
+}
+label {
+  font-family: "Merriweather", serif;
+
+}
+/* Menambahkan keyframes untuk animasi berputar */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.content-img {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.content-img, img {
+    width:50%;
+     display:flex;
+    justify-content:center;
+    transform:translateX(32%);
+    shadow: 2px 2px 5px rgba(0, 0, 0, 0.3)
+
+}
+.swall-font {
+  font-family: "Merriweather", serif;
+  font-weight:bold;
+
+}
+.swall-title {
+  font-family: "Merriweather", serif;
+}
+h1 {
+  letter-spacing: 1px; /* Mengatur jarak antar huruf */
+  line-height: 1.2; /* Mengatur jarak antar baris teks */
+}
+
+.swall-custom {
+  font-weight:bold;
+  font-family: "Merriweather", serif;
+  background-color:green!important;
+
+}
+.swall-custom2 {
+  font-weight:bold;
+  font-family: "Merriweather", serif;
+ 
+}
+body {
+  background:#5DAAD9;
+  background-size:cover;
+  min-height: 100vh;
+ 
+ }
+ body::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 108%;
+   background: rgba(0, 0, 0, 0.6); /* Warna hitam dengan opasitas 0.5 untuk menggelapkan background */
+   z-index: -1; /* Pastikan layer ini berada di belakang konten utama */
+ 
+ }
+
+
+
+.bg2-text-animation {
+  position: absolute;
+  top: 1rem;
+  font-size: 5rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  -webkit-text-stroke: 2px #ffff;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Habanero', sans-serif;
+  z-index: -1;
+  user-select: none;
+  display:none;
+  overflow-x:hidden!important;
+}
+main {
+  display:none;
+  z-index:-20;
+}
+#mobile-phone {
+  margin:1rem 0;
+}
+#status-success {
+  display:none;
+}
+#countdown {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color:white;
+  font-weight:bold;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+#dekstop {
+  display:block;
+}
+#main-content {
+  display:none;
+}
+
+#hidden-content {
+  display: none; /* Hide both elements initially */
+}
+#btn-confirm {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* body {
+    background-color:#61A3BA;
+  } */
+  .form-container {
+    background-color: #fff;
+    margin:0 0.5rem;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3)
+  }
+  .form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+  }
+  .form-label {
+    font-weight: bold;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  @media screen and (max-width: 640px) {
+     #alert-text {
+      display:none;
+     }
+    .content-img, img {
+      width:70%;
+      display:flex;
+      justify-content:center;
+      transform:translateX(12%);
+
+    }
+    .modal-dialog {
+      margin:2rem 1.5rem;
+    }
+    h1 {
+      font-family: 'Habanero', sans-serif;
+      letter-spacing: 1px; /* Mengatur jarak antar huruf */
+      line-height: 1.6; /* Mengatur jarak antar baris teks */
+    }
+    .bg2-text-animation {
+      font-size: 3.7rem; /* Sesuaikan ukuran teks untuk smartphone */
+      top:12rem;
+      text-align:center;
+      display:block;
+    }
+   
+    main {
+      display:block;
+    }
+    #dekstop {
+      display:none;
+    }
+    #footer {
+      margin:1.2rem 1rem;
+    }
+  
+  }

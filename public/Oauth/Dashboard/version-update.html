@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patch Update</title>
+    <meta name="author" content="David Grzyb">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="Dashboard.css">
+
+    <!-- Tailwind CSS (Latest Version) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+        .font-family-karla { font-family: 'Karla', sans-serif; }
+        .bg-sidebar { background-color: #3d68ff; }
+        .cta-btn { color: #3d68ff; }
+        .upgrade-btn { background-color: #1947ee; }
+        .upgrade-btn:hover { background-color: #0038fd; }
+        .active-nav-link { background-color: #1947ee; }
+        .nav-item:hover { background-color: #1947ee; }
+        .account-link:hover { background-color: #3d68ff; }
+        @media screen and (max-width: 640px) {
+
+        }
+    </style>
+
+    <!-- Font Awesome v6.4.0 (CSS) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-gray-100 font-family-karla flex">
+    <div id="loading">
+        <div id="loadingOverlay">
+            <h3 class="text-white font-bold">Redirecting . . . . . . </h3>
+        </div>
+    </div>
+    <!-- Sidebar -->
+    <aside id="content" class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
+        <div class="p-6">
+            <a href="/Oauth/Dashboard/Dashboard.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+            <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-tr-lg rounded-tl-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                <i class="fas fa-plus mr-3"></i> New Report
+            </button>
+        </div>
+        <nav class="text-white sm:text-white text-base font-semibold pt-3">
+            <a href="/Oauth/Dashboard/Dashboard.html" class="flex items-center py-4 pl-6 nav-item">
+                <i class="fas fa-gauge mr-3"></i>
+                Dashboard
+            </a>
+            <a href="/Oauth/Dashboard/version-update.html" class="flex items-center active-nav-link opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fa-solid fa-circle-info mr-3"></i>
+                Patch Update
+            </a>
+            <a href="/Oauth/Dashboard/Migratae-data.html" class="flex text-white items-center opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                <i class="fa-solid fa-database mr-3"></i>
+                Migrasi Database
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div id="content2" class="w-full flex flex-col h-screen overflow-y-hidden">
+        <!-- Desktop Header -->
+        <header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
+            <div class="w-1/2"></div>
+            <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
+                <button style="border: 2px solid aqua; border-radius: 50%;" @click="isOpen = !isOpen" class="relative z-10 w-12 h-12 rounded-full overflow-hidden focus:outline-none">
+                    <img src="/logo.png" alt="User Avatar">
+                </button>
+                <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
+                <div x-show="isOpen" class="absolute right-0 mt-16 w-32 bg-white rounded-lg shadow-lg py-2">
+                    <a href="#logout" id="logout-button" class="block px-4 py-2 account-link hover:text-white">Sign Out</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Header & Nav -->
+        <header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 sm:hidden">
+            <div class="flex items-center justify-between">
+                <a href="/Oauth/Dashboard/" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+                <button @click="isOpen = !isOpen" class="text-white text-3xl focus:outline-none">
+                    <i x-show="!isOpen" class="fas fa-bars"></i>
+                    <i x-show="isOpen" class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Dropdown Nav -->
+            <nav :class="isOpen ? 'flex' : 'hidden'" class="flex flex-col pt-4">
+                <a href="/Oauth/Dashboard/Dashboard.html" class="text-white flex items-center py-2 pl-4 nav-item">
+                    <i class="fas fa-gauge mr-3"></i>
+                    Dashboard
+                </a>
+                <a href="/Oauth/Dashboard/version-update.html" class="flex text-white items-center active-nav-link opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fa-solid fa-circle-info mr-3"></i>
+                    Patch Update
+                </a>
+                <a href="/Oauth/Dashboard/Migratae-data.html" class="flex text-white items-center opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fa-solid fa-database mr-3"></i>
+                    Migrasi Database
+                </a>
+                <a href="#" class="flex text-white items-center opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-right-from-bracket mr-3"></i>
+                    Sign Out
+                </a>
+            </nav>
+        </header>
+
+        <!-- Content Area -->
+        <div class="w-full overflow-x-hidden border-t flex flex-col">
+            <main class="w-full flex-grow p-6">
+                <h1 class="text-3xl text-black pb-6">Patch Update</h1>
+
+                
+            </main>
+
+            
+        </div>
+        
+    </div>
+
+    <!-- AlpineJS (Latest Version) -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <!-- Font Awesome v6.4.0 (CSS) sudah ditambahkan di <head> -->
+    <!-- ChartJS (Latest Version) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Chart One - Bar Chart
+            const ctx1 = document.getElementById('chartOne').getContext('2d');
+            new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Chart Two - Line Chart
+            const ctx2 = document.getElementById('chartTwo').getContext('2d');
+            new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    <script type="module" src="Authcheck.js"></script>
+</body>
+</html>
