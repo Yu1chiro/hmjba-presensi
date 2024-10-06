@@ -6,6 +6,7 @@
     <title>Panduan</title>
     <meta name="author" content="David Grzyb">
     <meta name="description" content="">
+    <link rel="shortcut icon" href="/public/logo.png" type="image/x-icon">
     <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="Dashboard.css">
 
@@ -20,17 +21,15 @@
 <body class="bg-gray-100 font-family-karla flex">
     <div id="loading">
         <div id="loadingOverlay">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+            <h3 class="text-white font-bold">Redirecting . . . . . . </h3>
         </div>
     </div>
         <aside id="content"  class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
             <div class="p-6">
-                <a href="/Oauth/Dashboard/Dashboard.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
-                <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-tr-lg rounded-tl-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                    <i class="fas fa-plus mr-3"></i> New Report
-                </button>
+                <a href="#" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+                <a href="https://wa.me/6281236715460?text=Hallo+ini+presensinya+ada+error" class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-tr-lg rounded-tl-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                    <i class="fas fa-plus mr-3"></i>Report Error
+                </a>
             </div>
             <nav class="text-white sm:text-white text-base font-semibold pt-3">
                 <a href="/Oauth/Dashboard/Dashboard.html" class="flex items-center active-nav-link py-4 pl-6 nav-item">
@@ -115,8 +114,27 @@
             <!-- Content Area -->
             <div class="w-full overflow-auto border-t flex flex-col">
                 <main class="w-full flex-grow p-6">
-                    <h1 class="text-3xl text-black pb-6">Panduan Menggunakan Presensi</h1>
-                    <h2 class="text-black font-bold text-center">Coming Soon !</h2>
+                    <h1 class="text-3xl text-black pb-6">Panduan Menggunakan Presensi & Feature</h1>
+                    <div style="margin: 0 2rem;" id="card-data" class="py-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center">
+                        <!-- Start content -->
+                        <div class="max-w-sm bg-gray-800 border border-gray-200 rounded-lg shadow">
+                            <iframe width="100%" class="rounded" height="auto" src="https://www.youtube.com/embed/1PxrSunQRaY" title="Panduan Menggunakan Dashboard &amp; Presensi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <div class="p-5">
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-white ">Tutorial Menggunakan Presensi</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-white">Untuk admin & skretaris yang masih belum paham terkait cara menggunakan dashboard dan presensi bisa di tonton ya hehe</p>
+                                <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    Read more
+                                     <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                                
+                                          
+                         </div>
                 </main>
     
             </div>

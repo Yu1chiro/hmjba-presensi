@@ -6,6 +6,7 @@
     <title>Dashboard Admin</title>
     <meta name="author" content="David Grzyb">
     <meta name="description" content="">
+    <link rel="shortcut icon" href="/public/logo.png" type="image/x-icon">
     <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="Dashboard.css">
 
@@ -27,10 +28,10 @@
     </div>
         <aside id="content"  class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
             <div class="p-6">
-                <a href="/Oauth/Dashboard/Dashboard.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
-                <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-tr-lg rounded-tl-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                    <i class="fas fa-plus mr-3"></i> New Report
-                </button>
+                <a href="#" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+                <a href="https://wa.me/6281236715460?text=Hallo+ini+presensinya+ada+error" class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-tr-lg rounded-tl-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                    <i class="fas fa-plus mr-3"></i>Report Error
+                </a>
             </div>
             <nav class="text-white sm:text-white text-base font-semibold pt-3">
                 <a href="/Oauth/Dashboard/Dashboard.html" class="flex items-center active-nav-link py-4 pl-6 nav-item">
@@ -202,7 +203,6 @@
                         </div>
                         <button type="submit" id="set-countdown" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-bold rounded-lg text-sm px-5 py-2.5 mt-2 lg:mt-0 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" >Buka</button>
                     </div>
-                      <button type="button" class="focus:outline-none mt-4 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-bold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" data-modal-target="default-modal" data-modal-toggle="default-modal" >Panduan Presensi</button>          
                       <button style="box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-bold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"  id="migrate-data">Migrate data </button>
 
                     </div>
@@ -269,7 +269,100 @@
     
             </div>
             
+            <div id="static-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+                <div class="relative w-full h-full max-w-2xl md:h-auto">
+                  <!-- Modal content -->
+                  <div class="relative bg-white rounded-lg shadow">
+                    <!-- Header -->
+                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                      <h3 class="text-xl font-semibold text-green-600">
+                        New UI Dashboard !<br>
+                        New Feature Migrate Database <br>
+                        New Feature Time Picker <br>
+                        <span class="text-sm text-black">Version 0.2</span>
+                      </h3>
+                    </div>
+                    <!-- Body -->
+                    <div class="p-6 space-y-6 max-h-80 overflow-y-auto">
+                        <div class="mb-5">
+                            <p class="text-left text-black text-md">Hallo admin baca dulu ya terkait fitur barunya </p>
+                            <p class="text-left text-black text-md"> Migrate Database merupakan salah satu fitur yg berfungsi memindahkan seluruh data presensi dalam tabel ke halaman yg berbeda, alih-alih mendownload data presensi sesegera mungkin, maka sebagai developer saya menciptakan fitur ini untuk me management data presensi sesuai dengan judul dan tanggalnya, asumsinya adalah ketika anda sudah mendapatkan semua data presensi namun anda enggan untuk men download data tersebut anda bisa menggunakan fitur migrate data. </p>
+                            <ol class="list-decimal">
+                              <li class="text-left text-black text-md mb-2">Bagaimana cara menggunakan fitur ini?</li>
+                              <li class="text-left text-black text-md mb-2">Klik fitur migrate data, input judul data, tanggal dan jenis data yg akan di migrate, kemudian klik submit</li>
+                              <li class="text-left text-black text-md mb-2">Data tabel presensi tersebut akan dipindahkan ke halaman yg berbeda, anda dapat mengakses halaman nya pada navbar yakni Migrate Database </li>
+                              <li class="text-left text-black text-md mb-2">Jika anda sudah me migrasikan data presensi ke halaman Migrate Database, anda bisa menghapus semua data presensi secara aman</li>
+                              <li class="text-left text-black text-md mb-2"> Kelebihan fitur ini yaitu anda bisa menghemat memori laptop/Hp anda dan anda dapat memilah data presensi mana yang akan di download/digunakan</li>
+                              <li class="text-left text-black text-md mb-2">Jika terdapat error atau masalah ketika me management data, silahkan laporkan masalah pada bagian navbar Report Error</li>
+                            </ol>
+                        </div>
+                        <div class="mb-5">
+                            <p class="text-left text-black text-md">Time Picker</p>
+                            <p class="text-left text-black text-md">Sekarang admin tidak perlu melakukan input/mengetik waktu presensi secara manual lagi, fitur time picker sudah ter inisialisasi secara realtime dengan waktu saat ini admin hanya perlu menentukan jam berapa presensi telat akan ditampilkan penggunaan time picker juga sederhana <br> Bagaimana cara menggunakanya? </p>
+                            <ol class="list-decimal mb-3">
+                              <li class="text-left text-black text-md mb-2">Disamping button tutup, terdapat card denngan icon time pilih waktu untuk men setting presensi terlambat kapan akan di tampilkan</li>
+                              <li class="text-left text-black text-md mb-2">Karena time picker bersifat realtime dengan waktu sekarang, admin hanya perlu men setting jam dan menit</li>
+                              <li class="text-left text-black text-md mb-2">Setelah anda menetapkan settingan waktu klik button "Buka" untuk membuka presensi, button "Tutup" berfungsi untuk menutup presensi dengan kata lain jika presensi sudah di tutup, presensi sudah tidak menerima data lagi.</li>
+                            <li class="text-left text-black text-md mb-2">Jika masih bingung terkait penggunaan fitur migrate database dan feature time picker bisa tonton video di bagian panduan ya</li>
+                            </ol>
+                            <p class="text-left text-black text-md">
+                                Sebagai developer saya berusaha mengembangkan UI dashboard yang menarik agar mudah dalam mengelola dan memanagament data, dan berusaha dalam memahami kebutuhan pengguna terkait fitur-fitur yang saya kembangkan, kedepanya saya akan mengembangkan beberapa fitur yang jauh lebih bermamfaat lagi. sekian dari saya.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Footer -->
+                    <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                      <button  id="understand-button" data-modal-hide="static-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Siap</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </div>
+          <script>
+             document.addEventListener("DOMContentLoaded", function() {
+    // Mendapatkan elemen modal
+    var modalElement = document.getElementById('static-modal');
+    
+    // Memastikan modal diinisialisasi dengan benar menggunakan Flowbite
+    var modal = new window.Modal(modalElement, {
+        backdrop: 'static',  // Modal tidak bisa ditutup dengan mengklik di luar modal
+        keyboard: false      // Modal tidak bisa ditutup dengan tombol escape
+    });
+
+    // Memeriksa status localStorage
+    if (!localStorage.getItem('admin-notif')) {
+        // Menampilkan modal hanya jika user belum mengerti
+        modal.show();
+    }
+
+    // Menangani tombol "Mengerti"
+    var understandButton = document.getElementById('understand-button'); // Tombol "Mengerti"
+    
+    // Awalnya sembunyikan tombol "Mengerti"
+    understandButton.style.display = 'none';
+
+    // Mendapatkan elemen modal yang bisa di-scroll
+    var modalContent = document.querySelector('#static-modal .max-h-80');
+
+    // Event listener untuk mendeteksi scroll pada modal
+    modalContent.addEventListener('scroll', function() {
+        // Cek apakah pengguna sudah mencapai bagian bawah modal
+        if (modalContent.scrollTop + modalContent.clientHeight >= modalContent.scrollHeight) {
+            // Tampilkan tombol "Mengerti" ketika sudah scroll sampai bawah
+            understandButton.style.display = 'inline-block';
+        }
+    });
+
+    // Ketika tombol "Mengerti" diklik
+    understandButton.addEventListener('click', function() {
+        // Simpan status di localStorage bahwa user sudah mengerti
+        localStorage.setItem('admin-notif', 'true');
+        modal.hide();  // Tutup modal
+    });
+});
+
+
+          </script>
         <style>
          @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
          .font-family-karla { font-family: 'Karla', sans-serif; }
@@ -285,73 +378,7 @@
          }
      </style>
      <!--  -->
-     <script>
-         document.addEventListener('DOMContentLoaded', () => {
-             // Chart One - Bar Chart
-             const ctx1 = document.getElementById('chartOne').getContext('2d');
-             new Chart(ctx1, {
-                 type: 'bar',
-                 data: {
-                     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                     datasets: [{
-                         label: '# of Votes',
-                         data: [12, 19, 3, 5, 2, 3],
-                         backgroundColor: [
-                             'rgba(255, 99, 132, 0.2)',
-                             'rgba(54, 162, 235, 0.2)',
-                             'rgba(255, 206, 86, 0.2)',
-                             'rgba(75, 192, 192, 0.2)',
-                             'rgba(153, 102, 255, 0.2)',
-                             'rgba(255, 159, 64, 0.2)'
-                         ],
-                         borderColor: [
-                             'rgba(255, 99, 132, 1)',
-                             'rgba(54, 162, 235, 1)',
-                             'rgba(255, 206, 86, 1)',
-                             'rgba(75, 192, 192, 1)',
-                             'rgba(153, 102, 255, 1)',
-                             'rgba(255, 159, 64, 1)'
-                         ],
-                         borderWidth: 1
-                     }]
-                 },
-                 options: {
-                     responsive: true,
-                     scales: {
-                         y: {
-                             beginAtZero: true
-                         }
-                     }
-                 }
-             });
     
-             // Chart Two - Line Chart
-             const ctx2 = document.getElementById('chartTwo').getContext('2d');
-             new Chart(ctx2, {
-                 type: 'line',
-                 data: {
-                     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                     datasets: [{
-                         label: '# of Votes',
-                         data: [12, 19, 3, 5, 2, 3],
-                         backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                         borderColor: 'rgba(54, 162, 235, 1)',
-                         borderWidth: 2,
-                         fill: true,
-                         tension: 0.4
-                     }]
-                 },
-                 options: {
-                     responsive: true,
-                     scales: {
-                         y: {
-                             beginAtZero: true
-                         }
-                     }
-                 }
-             });
-         });
-     </script>
      <!-- AlpineJS (Latest Version) -->
      <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
      <!-- Font Awesome v6.4.0 (CSS) sudah ditambahkan di <head> -->

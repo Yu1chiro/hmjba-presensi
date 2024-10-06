@@ -98,7 +98,7 @@ const initializeAppFunctions = (database) => {
                         <td class="text-center text-sm px-2">${item.name}</td>
                         <td class="text-center text-sm px-2">${item.nim}</td>
                         <td class="text-center text-sm px-2">${item.prodi}</td>
-                        <td class="text-center text-sm px-2">${item.jabatan}</td>
+                        <td class="text-center text-sm px-2">${item.Jabatan}</td>
                         <td class="text-center text-sm px-2">${item.keterangan}</td>
                         <td class="text-center text-white"><a class="text-green-600 font-bold" href="https://www.google.com/maps?q=${item.location.latitude},${item.location.longitude}" target="_blank">Lihat Lokasi</a></td>
                         <td class="text-center text-sm px-2 py-2">${item.deviceName}</td>

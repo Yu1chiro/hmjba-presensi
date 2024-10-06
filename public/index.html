@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome</title>
+  <title>HMJ Bahasa Asing - Presensi </title>
+  <link rel="shortcut icon" href="logo.png" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -34,6 +35,142 @@
     <p>&copy; HMJ Bahasa Asing 2024 || Develop by PBJ</p>
   </footer>
 </section>
+<div id="default-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+  <div class="relative w-full h-full max-w-2xl md:h-auto">
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow">
+      <!-- Header -->
+      <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+        <h3 class="text-xl font-semibold text-red-600">
+          ATTENTION !<br>
+          <span class="text-lg font-semibold text-black">
+            Baca dulu biar status keterangan presensi mu ga error lagi
+          </span>
+          <br>
+          <span class="text-sm text-black">Version 0.1 (error fixed)</span>
+        </h3>
+      </div>
+      <!-- Body -->
+      <div class="p-6 space-y-6 max-h-80 overflow-y-auto">
+        <p class="text-left text-black text-md">Baca dulu deh intinya biar Attention nya bisa di close 😁</p>
+        <p class="text-left text-black text-md">Dikarenakan terdapat beberapa mahasiswa yang mengalami masalah saat mengisi presensi khususnya pada status kehadiran, sebagai developer saya menemukan masalah yakni terletak pada tidak akuratnya lokasi/koordinat yg di dapatkan oleh sistem pada GPS/Lokasi user, untuk mengatasi hal tersebut maka, pahamilah intruksi pengisian presensi berikut ini : </p>
+        <ol class="list-decimal">
+          <li class="text-left text-black text-md mb-2">Sebelum mengisi presensi, mahasiswa tidak perlu menyalakan GPS/lokasi secara manual jika anda terlanjur menyalakan GPS/lokasi sebelumnya non aktifkan terlebih dahulu. GPS akan otomatis aktif saat Anda mengirim presensi, ditandai dengan munculnya notifikasi "izinkan akses lokasi". Hal ini bertujuan untuk mendapatkan akses terbaru koordinat lokasi anda berada</li>
+          <li class="text-left text-black text-md mb-2">Pastikan anda sudah berada di FBS ketika mengisi presensi, karena sistem presensi menggunakan koordinat lokasi anda sebagai status kehadiran pada sistem</li>
+          <li class="text-left text-black text-md mb-2">Selalu gunakan browser yg tepat seperti chrome dan browser pendukung lainnya</li>
+          <li class="text-left text-black text-md mb-2">Jika anda sudah mengikuti petunjuk pertama namun keterangan status presensi anda <span class="text-red-600">Tidak Hadir</span> anda bisa mematikan secara manual Gps anda terlebih dahulu kemudian melakukan hapus data cookie pada browser anda, dengan mengklik intruksi berikut <a href="#" class="text-white font-semibold border py-1 px-1 rounded bg-green-600" id="delete-cookie">Intruksi</a>
+            setelah menghapus data cookie pada browser anda bisa mengirim ulang presensi</li>
+          <li class="text-left text-black text-md mb-2">Pastikan selalu jujur dalam mengisi presensi sistem otomatis mendeteksi device yg anda gunakan</li>
+          <li class="text-left text-black text-md mb-2">Kenapa hal ini penting? kasihan juga sekretarisnya biar ga repot lagi edit manual data presensinya 😁 terimakasih sudah membaca dan memahami intruksinya selamat mengisi  presensi 😁</li>
+        </ol>
+      </div>
+      <!-- Footer -->
+      <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+        <button  id="understand-button" data-modal-hide="default-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Oke Aku Ngertii Wii</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+ <style>
+  .custom-confirm-button {
+    background-color:green!important;
+    color:white;
+}
+.custom-cancel-button {
+    background-color:red!important;
+    color:white;
+}
+
+ </style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+var resetPermissionLink = document.getElementById('delete-cookie');
+if (resetPermissionLink) {
+resetPermissionLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Array gambar - ganti URL ini dengan URL gambar Anda sendiri
+    const images = [
+        '/guide/1.png',
+        '/guide/2.png',
+        '/guide/3.png',
+        '/guide/4.png',
+    ];
+    
+    let currentImageIndex = 0;
+
+    const showNextImage = () => {
+        if (currentImageIndex < images.length) {
+            Swal.fire({
+                imageUrl: images[currentImageIndex],
+                imageAlt: `Slide ${currentImageIndex + 1}`,
+                showCancelButton: true,
+                showConfirmButton: currentImageIndex < images.length - 1,
+                confirmButtonText: 'Lanjut',
+                cancelButtonText: 'Tutup',
+                customClass: {
+                    image: 'swal-image',
+                     confirmButton: 'custom-confirm-button', // Kelas untuk tombol "Lanjut"
+                    cancelButton: 'custom-cancel-button'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    currentImageIndex++;
+                    showNextImage();
+                }
+            });
+        }
+    };
+    showNextImage();
+});
+}
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+// Mendapatkan elemen modal
+var modalElement = document.getElementById('default-modal');
+
+// Memastikan modal diinisialisasi dengan benar menggunakan Flowbite
+var modal = new window.Modal(modalElement, {
+  backdrop: 'static',  // Modal tidak bisa ditutup dengan mengklik di luar modal
+  keyboard: false      // Modal tidak bisa ditutup dengan tombol escape
+});
+
+// Memeriksa status localStorage
+if (!localStorage.getItem('new-ui')) {
+  // Menampilkan modal hanya jika user belum mengerti
+  modal.show();
+}
+
+// Menangani tombol "Mengerti"
+var understandButton = document.getElementById('understand-button'); // Tombol "Mengerti"
+
+// Awalnya sembunyikan tombol "Mengerti"
+understandButton.style.display = 'none';
+
+// Mendapatkan elemen modal yang bisa di-scroll
+var modalContent = document.querySelector('#default-modal .max-h-80');
+
+// Event listener untuk mendeteksi scroll pada modal
+modalContent.addEventListener('scroll', function() {
+  // Cek apakah pengguna sudah mencapai bagian bawah modal
+  if (modalContent.scrollTop + modalContent.clientHeight >= modalContent.scrollHeight) {
+      // Tampilkan tombol "Mengerti" ketika sudah scroll sampai bawah
+      understandButton.style.display = 'inline-block';
+  }
+});
+
+// Ketika tombol "Mengerti" diklik
+understandButton.addEventListener('click', function() {
+  // Simpan status di localStorage bahwa user sudah mengerti
+  localStorage.setItem('new-ui', 'true');
+  modal.hide();  // Tutup modal
+});
+});
+
+
+</script>
 <style>
   .margin {
     margin-right: 1rem;
@@ -50,6 +187,9 @@
     }
    }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </body>
 </html>
