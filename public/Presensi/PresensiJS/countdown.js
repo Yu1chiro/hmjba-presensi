@@ -264,7 +264,7 @@ const initializeAppFunctions = (database) => {
 
     // Mendaftarkan Service Worker
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').then((registration) => {
+        navigator.serviceWorker.register('/Presensi/sw.js').then((registration) => {
             console.log('Service Worker terdaftar dengan scope:', registration.scope);
         }).catch((error) => {
             console.log('Pendaftaran Service Worker gagal:', error);
