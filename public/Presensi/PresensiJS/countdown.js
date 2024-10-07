@@ -79,7 +79,7 @@ const initializeAppFunctions = (database) => {
             } else {
                 // Jika data countdown tidak ada
                 if (countdownElement) {
-                    countdownElement.textContent = 'PRESENSI DI TUTUP !';
+                    countdownElement.textContent = 'CLOSED !';
                     countdownElement.style.color = 'red';
                     countdownElement.style.fontWeight = 'bold';
                     countdownElement.style.textAlign = 'center';
@@ -114,7 +114,7 @@ const initializeAppFunctions = (database) => {
             const timeDiff = endDate - now;
     
             if (timeDiff <= 0) {
-                countdownElement.textContent = 'ANDA TERLAMBAT !';
+                countdownElement.textContent = 'YOU LATE !';
                 countdownElement.style.color = 'red';
                 countdownElement.style.fontWeight = 'bold';
     

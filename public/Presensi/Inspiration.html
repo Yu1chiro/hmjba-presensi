@@ -11,7 +11,11 @@
 </head>
 <body class="bg-gray-900">
     <h1 class="text-white font-bold text-2xl py-4 text-center" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); z-index: 100;">PRESENSI INSPIRATION</h1>
-    <h2 id="countdown"></h2>
+    <div style="display: flex; justify-content: center;">
+      <div style="border: 3px solid aqua ; border-radius: 10px; width: 85%; margin-bottom: 1rem;">
+        <h2 style="margin: 1rem 0;" id="countdown"></h2>
+      </div>
+    </div>
     <div class="content-img">
       <img src="/inspiration-2024.jpg" class="gradient-border rounded-full" alt="">
     </div>
@@ -19,7 +23,7 @@
 
 <main>
     <div id="main-content" class="container-lg py-5">
-        <div class="form-container">
+        <div  style="border: 5px solid aqua;" class="form-container">
             <form class="max-w-sm mx-auto">
                 <div class="mb-5">
                   <label for="name" class="block form-label mb-2 text-sm font-bold text-black">Nama Lengkap : </label>
@@ -46,10 +50,10 @@
     </div>
     <!--  -->
     <div class="container-lg py-5" id="hidden-content">
-      <div class="form-container">
+      <div style="border: 5px solid red;" class="form-container">
         <form id="tambah-data-form" class="max-w-sm mx-auto">
             <div class="mb-5">
-              <label for="name" class="block mb-2 text-sm font-bold text-black">Nama Lengakap : </label>
+              <label for="name" class="block mb-2 text-sm font-bold text-black">Nama Lengkap : </label>
               <input type="text" id="nama" class="bg-white border border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nama Lengkap Anda" required />
             </div>
             <div class="mb-5">
