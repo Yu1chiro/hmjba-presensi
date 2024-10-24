@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const initializeAppFunctions = (database) => {
 
     const copyPresensiLink = () => {
-        const link = "https://presensi-panitia.vercel.app/";
+        const link = "https://hmjbsa-presensi.vercel.app/";
         
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(link)
