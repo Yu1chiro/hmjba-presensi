@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="https://i.postimg.cc/8zHGtLSw/logo.png" type="image/x-icon">
     <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
-    <link rel="stylesheet" href="Dashboard.css">
+    <link rel="stylesheet" href="Potluck.css">
 
 
     <!-- Tailwind CSS (Latest Version) -->
@@ -34,18 +34,18 @@
                 </a>
             </div>
             <nav class="text-white sm:text-white text-base font-semibold pt-3">
-                <a href="/Oauth/Dashboard/Dashboard.html" class="flex items-center active-nav-link py-4 pl-6 nav-item">
+                <a href="#" class="flex items-center active-nav-link py-4 pl-6 nav-item">
                     <i class="fas fa-gauge mr-3"></i>
                     Dashboard
                 </a>
+                <a href="/Oauth/Dashboard/Dashboard.html" class="flex text-white items-center py-4 pl-6 nav-item">
+                  <i class="fas fa-gauge mr-3"></i>
+                  Dashboard INSPI
+              </a>
                 <a href="/Oauth/Dashboard/Uday/Dashboard.html" class="flex items-center  py-4 pl-6 nav-item">
                     <i class="fas fa-gauge mr-3"></i>
                     Dashboard UDAY
                 </a>
-                <a href="/Oauth/Dashboard/POTLUCK/Dashboard.html" class="flex items-center  py-4 pl-6 nav-item">
-                  <i class="fas fa-gauge mr-3"></i>
-                  Dashboard POTLUCK
-              </a>
                 <a href="/Oauth/Dashboard/version-update.html" class="flex items-center opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                     <i class="fa-solid fa-circle-info mr-3"></i>
                     Patch Update
@@ -54,7 +54,7 @@
                     <i class="fa-solid fa-book mr-3"></i>
                     Panduan
                 </a>
-                <a href="/Oauth/Dashboard/Migratae-data.html" class="flex text-white items-center opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                <a href="/Oauth/Dashboard/POTLUCK/Potluck-migrate.html" class="flex text-white items-center opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fa-solid fa-database mr-3"></i>
                     Migrasi Database
                 </a>
@@ -90,14 +90,14 @@
     
                 <!-- Dropdown Nav -->
                 <nav :class="isOpen ? 'flex' : 'hidden'" class="flex flex-col pt-4">
-                    <a href="/Oauth/Dashboard/Dashboard.html" class="text-white flex items-center active-nav-link py-2 pl-4 nav-item">
+                    <a href="#" class="text-white flex items-center active-nav-link py-2 pl-4 nav-item">
                         <i class="fas fa-gauge mr-3"></i>
                         Dashboard
                     </a>
-                    <a href="/Oauth/Dashboard/POTLUCK/Dashboard.html" class="flex items-center  py-4 pl-6 nav-item">
-                      <i class="fas fa-gauge mr-3"></i>
-                      Dashboard POTLUCK
-                  </a>
+                    <a href="/Oauth/Dashboard/Dashboard.html" class="flex text-white items-center py-4 pl-6 nav-item">
+                        <i class="fas fa-gauge mr-3"></i>
+                        Dashboard INSPI
+                    </a>
                     <a href="/Oauth/Dashboard/Uday/Dashboard.html" class="flex text-white items-center py-4 pl-6 nav-item">
                         <i class="fas fa-gauge mr-3"></i>
                         Dashboard UDAY
@@ -106,11 +106,7 @@
                         <i class="fa-solid fa-circle-info mr-3"></i>
                         Patch Update
                     </a>
-                    <a href="/Oauth/Dashboard/Panduan.html" class="flex text-white items-center opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                        <i class="fa-solid fa-book mr-3"></i>
-                        Panduan
-                    </a>
-                    <a href="/Oauth/Dashboard/Migratae-data.html" class="flex text-white items-center opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <a href="/Oauth/Dashboard/POTLUCK/Potluck-migrate.html" class="flex text-white items-center opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                         <i class="fa-solid fa-database mr-3"></i>
                         Migrasi Database
                     </a>
@@ -124,7 +120,7 @@
             <!-- Content Area -->
             <div class="w-full overflow-auto border-t flex flex-col">
                 <main class="w-full flex-grow p-6">
-                    <h1 class="text-3xl text-black pb-6">Dashboard Inspiration</h1>
+                    <h1 class="text-3xl text-black pb-6">Dashboard Potluck Party</h1>
                     <div style="margin-bottom: 2rem; border: 2px solid aqua;" id="accordion-collapse" data-accordion="collapse">
                         <h2 id="accordion-collapse-heading-1">
                           <button type="button" class="flex bg-gray-900 items-center justify-between w-full p-5 font-medium rtl:text-right text-white gap-3" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
@@ -230,7 +226,7 @@
                                         <th scope="col" class="py-3 px-6 text-center">Nama</th>
                                         <th scope="col" class="py-3 px-6 text-center">NIM</th>
                                         <th scope="col" class="py-3 px-6 text-center">Prodi</th>
-                                        <th scope="col" class="py-3 px-6 text-center">Jabatan</th>
+                                        <th scope="col" class="py-3 px-6 text-center">Kelas</th>
                                         <th scope="col" class="py-3 px-6 text-center">Keterangan</th>
                                         <th scope="col" class="py-3 px-6 text-center">Lokasi</th>
                                         <th scope="col" class="py-3 px-6 text-center">Device</th>
@@ -260,13 +256,13 @@
                                         <th scope="col" class="py-3 px-6 text-center">Nama </th>
                                         <th scope="col" class="py-3 px-6 text-center">NIM </th>
                                         <th scope="col" class="py-3 px-6 text-center">Prodi</th>
-                                        <th scope="col" class="py-3 px-6 text-center">Jabatan</th>
+                                        <th scope="col" class="py-3 px-6 text-center">Kelas</th>
                                         <th scope="col" class="py-3 px-6 text-center">Keterangan</th>
                                         <th scope="col" class="py-3 px-6 text-center">Alasan</th>
                                         <th scope="col" class="py-3 px-6 text-center">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody id="Inspi-Telat">
+                                <tbody id="Potluck-Telat">
                                     
                                     <!-- Tambahkan baris tabel lainnya sesuai kebutuhan -->
                                 </tbody>
@@ -277,100 +273,7 @@
     
             </div>
             
-            <div id="static-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-                <div class="relative w-full h-full max-w-2xl md:h-auto">
-                  <!-- Modal content -->
-                  <div class="relative bg-white rounded-lg shadow">
-                    <!-- Header -->
-                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                      <h3 class="text-xl font-semibold text-green-600">
-                        New UI Dashboard !<br>
-                        New Feature Migrate Database <br>
-                        New Feature Time Picker <br>
-                        <span class="text-sm text-black">Version 0.2</span>
-                      </h3>
-                    </div>
-                    <!-- Body -->
-                    <div class="p-6 space-y-6 max-h-80 overflow-y-auto">
-                        <div class="mb-5">
-                            <p class="text-left text-black text-md">Hallo admin baca dulu ya terkait fitur barunya </p>
-                            <p class="text-left text-black text-md"> Migrate Database merupakan salah satu fitur yg berfungsi memindahkan seluruh data presensi dalam tabel ke halaman yg berbeda, alih-alih mendownload data presensi sesegera mungkin, maka sebagai developer saya menciptakan fitur ini untuk me management data presensi sesuai dengan judul dan tanggalnya, asumsinya adalah ketika anda sudah mendapatkan semua data presensi namun anda enggan untuk men download data tersebut anda bisa menggunakan fitur migrate data. </p>
-                            <ol class="list-decimal">
-                              <li class="text-left text-black text-md mb-2">Bagaimana cara menggunakan fitur ini?</li>
-                              <li class="text-left text-black text-md mb-2">Klik fitur migrate data, input judul data, tanggal dan jenis data yg akan di migrate, kemudian klik submit</li>
-                              <li class="text-left text-black text-md mb-2">Data tabel presensi tersebut akan dipindahkan ke halaman yg berbeda, anda dapat mengakses halaman nya pada navbar yakni Migrate Database </li>
-                              <li class="text-left text-black text-md mb-2">Jika anda sudah me migrasikan data presensi ke halaman Migrate Database, anda bisa menghapus semua data presensi secara aman</li>
-                              <li class="text-left text-black text-md mb-2"> Kelebihan fitur ini yaitu anda bisa menghemat memori laptop/Hp anda dan anda dapat memilah data presensi mana yang akan di download/digunakan</li>
-                              <li class="text-left text-black text-md mb-2">Jika terdapat error atau masalah ketika me management data, silahkan laporkan masalah pada bagian navbar Report Error</li>
-                            </ol>
-                        </div>
-                        <div class="mb-5">
-                            <p class="text-left text-black text-md">Time Picker</p>
-                            <p class="text-left text-black text-md">Sekarang admin tidak perlu melakukan input/mengetik waktu presensi secara manual lagi, fitur time picker sudah ter inisialisasi secara realtime dengan waktu saat ini admin hanya perlu menentukan jam berapa presensi telat akan ditampilkan penggunaan time picker juga sederhana <br> Bagaimana cara menggunakanya? </p>
-                            <ol class="list-decimal mb-3">
-                              <li class="text-left text-black text-md mb-2">Disamping button tutup, terdapat card denngan icon time pilih waktu untuk men setting presensi terlambat kapan akan di tampilkan</li>
-                              <li class="text-left text-black text-md mb-2">Karena time picker bersifat realtime dengan waktu sekarang, admin hanya perlu men setting jam dan menit</li>
-                              <li class="text-left text-black text-md mb-2">Setelah anda menetapkan settingan waktu klik button "Buka" untuk membuka presensi, button "Tutup" berfungsi untuk menutup presensi dengan kata lain jika presensi sudah di tutup, presensi sudah tidak menerima data lagi.</li>
-                            <li class="text-left text-black text-md mb-2">Jika masih bingung terkait penggunaan fitur migrate database dan feature time picker bisa tonton video di bagian panduan ya</li>
-                            </ol>
-                            <p class="text-left text-black text-md">
-                                Sebagai developer saya berusaha mengembangkan UI dashboard yang menarik agar mudah dalam mengelola dan memanagament data, dan berusaha dalam memahami kebutuhan pengguna terkait fitur-fitur yang saya kembangkan, kedepanya saya akan mengembangkan beberapa fitur yang jauh lebih bermamfaat lagi. sekian dari saya.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Footer -->
-                    <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                      <button  id="understand-button" data-modal-hide="static-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Siap</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
         </div>
-          <script>
-             document.addEventListener("DOMContentLoaded", function() {
-    // Mendapatkan elemen modal
-    var modalElement = document.getElementById('static-modal');
-    
-    // Memastikan modal diinisialisasi dengan benar menggunakan Flowbite
-    var modal = new window.Modal(modalElement, {
-        backdrop: 'static',  // Modal tidak bisa ditutup dengan mengklik di luar modal
-        keyboard: false      // Modal tidak bisa ditutup dengan tombol escape
-    });
-
-    // Memeriksa status localStorage
-    if (!localStorage.getItem('admin-notif')) {
-        // Menampilkan modal hanya jika user belum mengerti
-        modal.show();
-    }
-
-    // Menangani tombol "Mengerti"
-    var understandButton = document.getElementById('understand-button'); // Tombol "Mengerti"
-    
-    // Awalnya sembunyikan tombol "Mengerti"
-    understandButton.style.display = 'none';
-
-    // Mendapatkan elemen modal yang bisa di-scroll
-    var modalContent = document.querySelector('#static-modal .max-h-80');
-
-    // Event listener untuk mendeteksi scroll pada modal
-    modalContent.addEventListener('scroll', function() {
-        // Cek apakah pengguna sudah mencapai bagian bawah modal
-        if (modalContent.scrollTop + modalContent.clientHeight >= modalContent.scrollHeight) {
-            // Tampilkan tombol "Mengerti" ketika sudah scroll sampai bawah
-            understandButton.style.display = 'inline-block';
-        }
-    });
-
-    // Ketika tombol "Mengerti" diklik
-    understandButton.addEventListener('click', function() {
-        // Simpan status di localStorage bahwa user sudah mengerti
-        localStorage.setItem('admin-notif', 'true');
-        modal.hide();  // Tutup modal
-    });
-});
-
-
-          </script>
         <style>
          @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
          .font-family-karla { font-family: 'Karla', sans-serif; }
@@ -395,12 +298,12 @@
        <!-- Sidebar -->
    <!--  -->
    <script type="module" src="/Oauth/Auth.js"></script>
-   <script type="module" src="/Oauth/Dashboard/INSPI/count.js"></script>
    <script type="module" src="/Oauth/Dashboard/Authcheck.js"></script>
-   <script type="module" src="/Oauth/Dashboard/INSPI/CountdownSet.js"></script>
-   <script type="module" src="/Oauth/Dashboard/INSPI/FetchForm1.js"></script>
-   <script type="module" src="/Oauth/Dashboard/INSPI/FetchForm2.js"></script>
-   <script type="module" src="/Oauth/Dashboard/INSPI/CountdownSet.js"></script>
+   <script type="module" src="/Oauth/Dashboard/potluckJS/controllertimer.js"></script>
+   <script type="module" src="/Oauth/Dashboard/potluckJS/countpotluck.js"></script>
+   <script type="module" src="/Oauth/Dashboard/potluckJS/fetchpost.js"></script>
+   <script type="module" src="/Oauth/Dashboard/potluckJS/fetchlate.js"></script>
+   <script type="module" src="/Oauth/Dashboard/potluckJS/migratepotluck.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
    

@@ -1,6 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
-import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
-import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-database.js";
 
 const initializeFirebase = (firebaseConfig) => {
     const app = initializeApp(firebaseConfig);
@@ -40,6 +40,7 @@ const initializeAppFunctions = (auth, database) => {
     const contentElement = document.getElementById('content');
     const content2Element = document.getElementById('content2');
     
+    
     // Tampilkan loading
     loadingElement.style.display = 'block';
     
@@ -52,6 +53,7 @@ const initializeAppFunctions = (auth, database) => {
                     loadingElement.style.display = 'none';
                     contentElement.style.display = 'block';
                     content2Element.style.display = 'block';
+                    
                 } else {
                     // Jika user bukan admin, arahkan ke halaman sign-in
                     window.location.href = "/Oauth/Login.html";
