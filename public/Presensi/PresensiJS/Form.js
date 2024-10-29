@@ -1,6 +1,6 @@
 // public/interface.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js";
+import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js";
 
 // Fungsi untuk menginisialisasi Firebase setelah mengambil konfigurasi dari server
 const initializeFirebase = (firebaseConfig) => {
@@ -23,9 +23,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 
+// Fungsi untuk mengambil koordinat target dari Firebase
+const getTargetCoordinate = async (database) => {
+    try {
+        const coordinateRef = ref(database, 'koordinat');
+        const snapshot = await get(coordinateRef);
+        if (snapshot.exists()) {
+            return snapshot.val();
+        } else {
+            console.log('Koordinat target tidak ditemukan di Firebase.');
+            return null;
+        }
+    } catch (error) {
+        console.error('Gagal mengambil koordinat target dari Firebase:', error);
+        return null;
+    }
+};
+
+// Fungsi untuk menentukan keterangan berdasarkan lokasi
+const determineKeterangan = async (database, latitude, longitude) => {
+    const targetCoordinate = await getTargetCoordinate(database);
+    if (targetCoordinate) {
+        const { latitude: targetLatitude, longitude: targetLongitude } = targetCoordinate;
+        const tolerance = 0.00629;
+
+        const isWithinLocation = Math.abs(latitude - targetLatitude) <= tolerance && Math.abs(longitude - targetLongitude) <= tolerance;
+        return isWithinLocation ? "Hadir" : "Tidak Hadir";
+    } else {
+        return "Tidak Hadir";
+    }
+};
+
 // Fungsi untuk menginisialisasi fungsi-fungsi lain setelah Firebase siap
-const initializeAppFunctions = (database) => {
-    
+const initializeAppFunctions = async (database) => {
     // Fungsi untuk memeriksa izin lokasi
     const checkLocationPermission = () => {
         return new Promise((resolve, reject) => {
@@ -41,7 +71,7 @@ const initializeAppFunctions = (database) => {
             });
         });
     };
-    
+
     // Fungsi untuk mendapatkan lokasi pengguna
     const getLocation = () => {
         return new Promise((resolve, reject) => {
@@ -54,22 +84,12 @@ const initializeAppFunctions = (database) => {
             navigator.geolocation.getCurrentPosition(resolve, reject, options);
         });
     };
-    
-    // Fungsi untuk menentukan keterangan berdasarkan lokasi
-    const determineKeterangan = (latitude, longitude) => {
-        const targetLatitude = -8.1125983;
-        const targetLongitude = 115.0856583;
-        const tolerance = 0.00629;
 
-        const isWithinLocation = Math.abs(latitude - targetLatitude) <= tolerance && Math.abs(longitude - targetLongitude) <= tolerance;
-        return isWithinLocation ? "Hadir" : "Tidak Hadir";
-    };
-    
     // Fungsi untuk mendapatkan nama perangkat pengguna
     const getDeviceName = () => {
         return navigator.userAgent;
     };
-    
+
     // Fungsi untuk menampilkan loading SweetAlert
     const showLoadingSwal = () => {
         return Swal.fire({
@@ -80,13 +100,13 @@ const initializeAppFunctions = (database) => {
             }
         });
     };
-    
+
     // Fungsi untuk menyimpan data ke Firebase
     const saveDataToFirebase = (data) => {
         const newDataRef = ref(database, 'Presensi-Inspi/' + data.nim);
         return set(newDataRef, data);
     };
-    
+
     // Event listener untuk tombol submit
     const submitButton = document.getElementById("submit-data");
     if (submitButton) {
@@ -95,7 +115,7 @@ const initializeAppFunctions = (database) => {
             const nim = document.getElementById("Nim").value.trim();
             const prodi = document.getElementById("Prodi").value.trim();
             const jabatan = document.getElementById("Jabatan").value.trim();
-    
+
             if (!name || !nim || !prodi || !jabatan) {
                 Swal.fire({
                     icon: 'error',
@@ -104,7 +124,7 @@ const initializeAppFunctions = (database) => {
                 });
                 return;
             }
-    
+
             let loadingSwal;
             try {
                 const permissionStatus = await checkLocationPermission();
@@ -112,14 +132,14 @@ const initializeAppFunctions = (database) => {
                 if (permissionStatus === 'denied') {
                     throw new Error('PERMISSION_DENIED');
                 }
-    
+
                 loadingSwal = showLoadingSwal();
-    
+
                 const position = await getLocation();
                 const { latitude, longitude } = position.coords;
-                const keterangan = determineKeterangan(latitude, longitude);
+                const keterangan = await determineKeterangan(database, latitude, longitude);
                 const deviceName = getDeviceName();
-    
+
                 const newData = {
                     name,
                     nim,
@@ -130,16 +150,16 @@ const initializeAppFunctions = (database) => {
                     deviceName,
                     timestamp: Date.now()
                 };
-    
+
                 await saveDataToFirebase(newData);
-    
+
                 // Menunggu minimal 0.8 detik sebelum menutup loading
                 await new Promise(resolve => setTimeout(resolve, 800));
-    
+
                 if (loadingSwal) {
                     loadingSwal.close();
                 }
-    
+
                 await Swal.fire({
                     icon: 'success',
                     title: '<p class="swall-title text-green-700">Presensi Terkirim!</p>',
@@ -148,7 +168,7 @@ const initializeAppFunctions = (database) => {
                         confirmButton: 'swall-custom'
                     }
                 });
-    
+
                 const alertMessage = keterangan === "Hadir" ?
                     {
                         icon: 'success',
@@ -163,20 +183,20 @@ const initializeAppFunctions = (database) => {
                         showConfirmButton: false,
                     };
                 await Swal.fire(alertMessage);
-    
+
                 // Reset form fields
                 document.getElementById("Name").value = '';
                 document.getElementById("Nim").value = '';
                 document.getElementById("Prodi").value = '';
                 document.getElementById("Jabatan").value = '';
-    
+
             } catch (error) {
                 console.error("Error:", error);
-    
+
                 if (loadingSwal) {
                     loadingSwal.close();
                 }
-    
+
                 if (error.message === 'PERMISSION_DENIED') {
                     Swal.fire({
                         icon: 'error',
