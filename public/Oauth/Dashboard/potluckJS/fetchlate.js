@@ -2,31 +2,26 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
 import { getDatabase, ref, set, get, onChildAdded, onChildRemoved, remove } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js";
 
-// Fungsi untuk menginisialisasi Firebase setelah mengambil konfigurasi dari server
 const initializeFirebase = (firebaseConfig) => {
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app);
-    return database; // Hanya mengembalikan database
+    return database; 
 };
 
-// Fungsi utama yang dijalankan saat DOM telah dimuat
 document.addEventListener('DOMContentLoaded', () => {
-    // Mengambil konfigurasi Firebase dari server dan menginisialisasi Firebase
     fetch('/firebase-config')
         .then(response => response.json())
         .then(config => {
             const database = initializeFirebase(config);
-            initializeAppFunctions(database); // Mengirim database sebagai parameter
+            initializeAppFunctions(database); 
         })
         .catch(error => {
             console.error('Gagal mengambil konfigurasi Firebase:', error);
         });
 });
 
-// Fungsi untuk menginisialisasi fungsi-fungsi lain setelah Firebase siap
 const initializeAppFunctions = (database) => {
 
-    // Fungsi untuk memformat timestamp menjadi format yang mudah dibaca
     const formatTimestamp = (timestamp) => {
         const date = new Date(timestamp);
         return date.toLocaleString();

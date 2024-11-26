@@ -116,5 +116,5 @@ const initializeAppFunctions = (auth, database) => {
     } else {
         console.warn("Element dengan ID 'logout-button' tidak ditemukan.");
     }
-
+      
 };

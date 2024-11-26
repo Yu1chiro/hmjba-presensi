@@ -1,16 +1,13 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js";
 
-// Fungsi untuk menginisialisasi Firebase setelah mengambil konfigurasi dari server
 const initializeFirebase = (firebaseConfig) => {
   const app = initializeApp(firebaseConfig);
   const database = getDatabase(app);
   return database;
 };
 
-// Fungsi utama yang dijalankan saat DOM telah dimuat
 document.addEventListener('DOMContentLoaded', () => {
-  // Mengambil konfigurasi Firebase dari server dan menginisialisasi Firebase
   fetch('/firebase-config')
     .then(response => response.json())
     .then(config => {
@@ -28,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Fungsi untuk menginisialisasi fungsi-fungsi lain setelah Firebase siap
 const initializeAppFunctions = (database) => {
   const setCoordinateButton = document.getElementById("set-coordinate");
   if (setCoordinateButton) {

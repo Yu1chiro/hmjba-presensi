@@ -60,7 +60,6 @@ const initializeAppFunctions = (database) => {
           .then(() => {
             hideAllPresensiLinks();
             
-            // Tampilkan link yang dipilih
             const selectedLink = document.getElementById(selectedOption);
             if (selectedLink) {
               selectedLink.style.display = 'block';
