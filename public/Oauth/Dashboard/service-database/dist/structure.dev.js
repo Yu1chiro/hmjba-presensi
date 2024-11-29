@@ -6,12 +6,12 @@ var _firebaseDatabase = require("https://www.gstatic.com/firebasejs/9.8.2/fireba
 
 var _firebaseAuth = require("https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js");
 
-// Variabel global untuk konfigurasi Firebase
-var firebaseConfig = null;
-var firebaseAppInstance = null; // Fungsi untuk mendapatkan konfigurasi Firebase
+var firebaseApp;
+var database;
+var auth;
 
 function fetchFirebaseConfig() {
-  var response;
+  var response, config;
   return regeneratorRuntime.async(function fetchFirebaseConfig$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -26,9 +26,9 @@ function fetchFirebaseConfig() {
           return regeneratorRuntime.awrap(response.json());
 
         case 6:
-          firebaseConfig = _context.sent;
+          config = _context.sent;
 
-          if (firebaseConfig) {
+          if (config) {
             _context.next = 9;
             break;
           }
@@ -36,30 +36,23 @@ function fetchFirebaseConfig() {
           throw new Error('Konfigurasi Firebase tidak valid');
 
         case 9:
-          // Inisialisasi Firebase App hanya jika belum diinisialisasi
-          if (!firebaseAppInstance) {
-            firebaseAppInstance = (0, _firebaseApp.initializeApp)(firebaseConfig);
-          }
+          firebaseApp = (0, _firebaseApp.initializeApp)(config);
+          database = (0, _firebaseDatabase.getDatabase)(firebaseApp);
+          auth = (0, _firebaseAuth.getAuth)(firebaseApp);
+          return _context.abrupt("return", database);
 
-          return _context.abrupt("return", firebaseAppInstance);
-
-        case 13:
-          _context.prev = 13;
+        case 15:
+          _context.prev = 15;
           _context.t0 = _context["catch"](0);
           console.error('Kesalahan mengambil konfigurasi Firebase:', _context.t0);
-          Swal.fire({
-            icon: 'error',
-            title: 'Kesalahan',
-            text: 'Gagal mendapatkan konfigurasi Firebase'
-          });
           throw _context.t0;
 
-        case 18:
+        case 19:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 13]]);
+  }, null, null, [[0, 15]]);
 } // Konversi gambar ke Base64
 
 
@@ -91,7 +84,8 @@ function convertImageToBase64(file) {
 
 
 function tambahAnggota(nama, thumbnail, jabatan, link) {
-  var database, membersRef, newMemberRef;
+  var _database, membersRef, newMemberRef;
+
   return regeneratorRuntime.async(function tambahAnggota$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
@@ -109,8 +103,8 @@ function tambahAnggota(nama, thumbnail, jabatan, link) {
           return regeneratorRuntime.awrap(fetchFirebaseConfig());
 
         case 4:
-          database = (0, _firebaseDatabase.getDatabase)();
-          membersRef = (0, _firebaseDatabase.ref)(database, 'structure-member');
+          _database = (0, _firebaseDatabase.getDatabase)();
+          membersRef = (0, _firebaseDatabase.ref)(_database, 'structure-member');
           newMemberRef = (0, _firebaseDatabase.push)(membersRef);
           _context3.next = 9;
           return regeneratorRuntime.awrap((0, _firebaseDatabase.set)(newMemberRef, {
@@ -152,7 +146,8 @@ function tambahAnggota(nama, thumbnail, jabatan, link) {
 
 
 function tampilkanAnggota() {
-  var database, membersRef;
+  var _database2, membersRef;
+
   return regeneratorRuntime.async(function tampilkanAnggota$(_context4) {
     while (1) {
       switch (_context4.prev = _context4.next) {
@@ -162,8 +157,8 @@ function tampilkanAnggota() {
           return regeneratorRuntime.awrap(fetchFirebaseConfig());
 
         case 3:
-          database = (0, _firebaseDatabase.getDatabase)();
-          membersRef = (0, _firebaseDatabase.ref)(database, 'structure-member');
+          _database2 = (0, _firebaseDatabase.getDatabase)();
+          membersRef = (0, _firebaseDatabase.ref)(_database2, 'structure-member');
           (0, _firebaseDatabase.onValue)(membersRef, function (snapshot) {
             var tableBody = document.getElementById('table-member');
             tableBody.innerHTML = '';
@@ -193,7 +188,8 @@ function tampilkanAnggota() {
 
 
 function detailAnggota(memberId) {
-  var database, memberRef, snapshot, member;
+  var _database3, memberRef, snapshot, member;
+
   return regeneratorRuntime.async(function detailAnggota$(_context5) {
     while (1) {
       switch (_context5.prev = _context5.next) {
@@ -203,8 +199,8 @@ function detailAnggota(memberId) {
           return regeneratorRuntime.awrap(fetchFirebaseConfig());
 
         case 3:
-          database = (0, _firebaseDatabase.getDatabase)();
-          memberRef = (0, _firebaseDatabase.ref)(database, "structure-member/".concat(memberId));
+          _database3 = (0, _firebaseDatabase.getDatabase)();
+          memberRef = (0, _firebaseDatabase.ref)(_database3, "structure-member/".concat(memberId));
           _context5.next = 7;
           return regeneratorRuntime.awrap((0, _firebaseDatabase.get)(memberRef));
 
@@ -238,7 +234,8 @@ function detailAnggota(memberId) {
 
 
 function editAnggota(memberId) {
-  var database, memberRef, snapshot, member;
+  var _database4, memberRef, snapshot, member;
+
   return regeneratorRuntime.async(function editAnggota$(_context7) {
     while (1) {
       switch (_context7.prev = _context7.next) {
@@ -248,8 +245,8 @@ function editAnggota(memberId) {
           return regeneratorRuntime.awrap(fetchFirebaseConfig());
 
         case 3:
-          database = (0, _firebaseDatabase.getDatabase)();
-          memberRef = (0, _firebaseDatabase.ref)(database, "structure-member/".concat(memberId));
+          _database4 = (0, _firebaseDatabase.getDatabase)();
+          memberRef = (0, _firebaseDatabase.ref)(_database4, "structure-member/".concat(memberId));
           _context7.next = 7;
           return regeneratorRuntime.awrap((0, _firebaseDatabase.get)(memberRef));
 
@@ -339,7 +336,8 @@ function hapusAnggota(memberId) {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Ya, Hapus!'
           }).then(function _callee(result) {
-            var database, memberRef;
+            var _database5, memberRef;
+
             return regeneratorRuntime.async(function _callee$(_context8) {
               while (1) {
                 switch (_context8.prev = _context8.next) {
@@ -354,8 +352,8 @@ function hapusAnggota(memberId) {
                     return regeneratorRuntime.awrap(fetchFirebaseConfig());
 
                   case 4:
-                    database = (0, _firebaseDatabase.getDatabase)();
-                    memberRef = (0, _firebaseDatabase.ref)(database, "structure-member/".concat(memberId));
+                    _database5 = (0, _firebaseDatabase.getDatabase)();
+                    memberRef = (0, _firebaseDatabase.ref)(_database5, "structure-member/".concat(memberId));
                     _context8.next = 8;
                     return regeneratorRuntime.awrap((0, _firebaseDatabase.remove)(memberRef));
 

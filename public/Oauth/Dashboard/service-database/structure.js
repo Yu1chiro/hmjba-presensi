@@ -14,36 +14,30 @@ import {
     getAuth 
 } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
 
-// Variabel global untuk konfigurasi Firebase
-let firebaseConfig = null;
-let firebaseAppInstance = null;
+let firebaseApp;
+let database;
+let auth;
 
-// Fungsi untuk mendapatkan konfigurasi Firebase
 async function fetchFirebaseConfig() {
     try {
         const response = await fetch('/firebase-config');
-        firebaseConfig = await response.json();
+        const config = await response.json();
         
-        if (!firebaseConfig) {
+        if (!config) {
             throw new Error('Konfigurasi Firebase tidak valid');
         }
-
-        // Inisialisasi Firebase App hanya jika belum diinisialisasi
-        if (!firebaseAppInstance) {
-            firebaseAppInstance = initializeApp(firebaseConfig);
-        }
-
-        return firebaseAppInstance;
+        
+        firebaseApp = initializeApp(config);
+        database = getDatabase(firebaseApp);
+        auth = getAuth(firebaseApp);
+        
+        return database;
     } catch (error) {
         console.error('Kesalahan mengambil konfigurasi Firebase:', error);
-        Swal.fire({
-            icon: 'error',
-            title: 'Kesalahan',
-            text: 'Gagal mendapatkan konfigurasi Firebase'
-        });
         throw error;
     }
 }
+
 
 // Konversi gambar ke Base64
 async function convertImageToBase64(file) {
