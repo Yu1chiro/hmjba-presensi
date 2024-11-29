@@ -98,7 +98,7 @@ async function fetchStructureMembers() {
                         </a>
                     </div>
                 `;
-
+// menambahkan link href presisi
                 structureDataContainer.appendChild(memberCard);
             });
         }, (error) => {
