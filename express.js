@@ -3,26 +3,21 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Memuat variabel lingkungan dari .env
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Menentukan path direktori saat ini
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Menambahkan header Cache-Control untuk mencegah caching
 app.use((req, res, next) => {
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate'); // Mengatur header untuk tidak menggunakan cache
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   next();
 });
 
-// Menyajikan file statis dari folder 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Endpoint untuk mengirimkan konfigurasi Firebase
 app.get('/firebase-config', (req, res) => {
   try {
     res.json({
@@ -41,12 +36,10 @@ app.get('/firebase-config', (req, res) => {
   }
 });
 
-// Mengirimkan index.html saat root diakses
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Menjalankan server
 app.listen(port, () => {
   console.log(`Server berjalan di http://localhost:${port}`);
 });

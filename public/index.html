@@ -3,201 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HMJ Bahasa Asing - Presensi </title>
+  <title>HMJ Foreign Language</title>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="https://i.postimg.cc/8zHGtLSw/logo.png" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+  <link rel="stylesheet" href="index.css">
 </head>
-<body>
-  
-
-<section class="main-content bg-center bg-no-repeat bg-cover  bg-gray-700 bg-blend-multiply" style="background-image: url('/logo.png');">
+<body class="bg-[#023E8A] fonts-custom">
+  <!-- Navbar -->
+  <nav class="bg-gradient-to-r from-[#2B3784] to-[#4361EE] border-gray-200 calc w-full">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+          <img src="img/icon.jpg" class="h-10 rounded-full" alt="Flowbite Logo" />
+          <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">HMJ Bahasa Asing</span>
+      </a>
+      <button data-collapse-toggle="navbar-default" type="button" class="mix-blend-mode-multiply inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-[#03045E] focus:outline-none focus:ring-2 focus:ring-[#03045E]">
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="grid-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-grid-2 fa-lg"><path fill="currentColor" d="M224 80c0-26.5-21.5-48-48-48L80 32C53.5 32 32 53.5 32 80l0 96c0 26.5 21.5 48 48 48l96 0c26.5 0 48-21.5 48-48l0-96zm0 256c0-26.5-21.5-48-48-48l-96 0c-26.5 0-48 21.5-48 48l0 96c0 26.5 21.5 48 48 48l96 0c26.5 0 48-21.5 48-48l0-96zM288 80l0 96c0 26.5 21.5 48 48 48l96 0c26.5 0 48-21.5 48-48l0-96c0-26.5-21.5-48-48-48l-96 0c-26.5 0-48 21.5-48 48zM480 336c0-26.5-21.5-48-48-48l-96 0c-26.5 0-48 21.5-48 48l0 96c0 26.5 21.5 48 48 48l96 0c26.5 0 48-21.5 48-48l0-96z" class="text-white"></path></svg>
+      </button>
+  <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+    <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  ">
+      <li>
+        <a href="#" class="block py-2 px-3 font-bold rounded md:bg-transparent  md:p-0 text-white hover:text-[#FFB703] transition-colors duration-300" aria-current="page">Home</a>
+      </li>
+      <li>
+        <a href="#about"class="block py-2 px-3 font-bold rounded md:bg-transparent  md:p-0 text-white hover:text-[#FFB703] transition-colors duration-300">About</a>
+      </li>
+      <li>
+        <a href="#events"class="block py-2 px-3 font-bold rounded md:bg-transparent  md:p-0 text-white hover:text-[#FFB703] transition-colors duration-300">Information</a>
+      </li>
+      <li>
+        <a href="#member"class="block py-2 px-3 font-bold rounded md:bg-transparent  md:p-0 text-white hover:text-[#FFB703] transition-colors duration-300">HMJ Structure</a>
+      </li>
+      <li>
+        <a href="#" data-dropdown-toggle="language-dropdown-menu" class="block py-2 px-4 font-bold rounded md:bg-transparent  md:p-0 text-white hover:bg-[#E85D04] transition-colors duration-300">More</a>
+        <!-- Dropdown -->
+        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow" id="language-dropdown-menu">
+            <ul id="links-container" class="py-2 font-medium" role="none">
+                <!-- litemplate -->
+               
+              
+            </ul>
+        </div>
+       </li>
+      <li>
+        <a href="/Oauth/Dashboard/Dashboard.html"class="block py-2 px-3 font-bold rounded md:bg-transparent  md:p-0 text-white hover:text-[#FFB703] transition-colors duration-300">Login</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+   <!-- /// -->
+<!-- Home Section -->
+<section class="main-content calc bg-center bg-no-repeat bg-cover  bg-gray-700 bg-blend-multiply w-full" style="background-image: url('/logo.png');">
   <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
       <div class="mobile">
-        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Selamat Datang di Halaman Presensi HMJ BAHASA ASING</h1>
-          <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Jika anda adalah admin silahkan login dan jika anda adalah user silahkan menuju presensi</p>
-          <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-              <a href="/Oauth/Dashboard/Dashboard.html" class="inline-flex margin justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-                  Login
-                  <i class="fa-regular fa-user ms-3"></i>
-              </a>
-              <a id="presensi-inspi" href="/Presensi/Presensi-Inspi.html" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-                  Presensi Panitia
-                  <i class="fa-regular fa-pen-to-square ms-3"></i>
-              </a>
-              <a id="presensi-potluck" href="/Presensi/Potluck.html" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-                  Presensi Mahasiswa
-                  <i class="fa-regular fa-pen-to-square ms-3"></i>
-              </a>
-              <a id="presensi-uday" href="/Presensi/Uday.html" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-                  Presensi United Day
-                  <i class="fa-regular fa-pen-to-square ms-3"></i>
-              </a>
+        <h1 class="mb-4 text-3xl xl:text-4xl  font-extrabold tracking-tight leading-relaxed text-white">WELCOME TO HMJ FOREIGN LANGUAGE</h1>
+          <p class="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48">Welcome to HMJ Foreign Language Website! To infinity dan beyond 🎓✨</p>
+      </div>
+  </div>
+</section>
+<!-- About Section -->
+<section  class="calc bg-[#023E8A] w-full min-h-screen">
+  <div id="about" class="container mx-auto px-4 py-16">
+      <div class="flex flex-col md:flex-row items-center justify-between">
+          <!-- Left Content -->
+          <div class="md:w-1/2 text-white space-y-6">
+              <h1 class="text-3xl sm:text-3xl font-bold mb-4">
+                  <span class="text-[#CAF0F8] about-text">About</span> <br> HMJ BAHASA ASING
+              </h1>
+              <div data-aos="zoom-in" class="block bg-white w-full p-3  rounded-lg mb-3 lg:hidden md:hidden flex justify-center">
+                  <img src="img/icon.jpg" class="rounded-lg w-[550px] h-full object-cover" alt="hmj">
+              </div>
+              <p data-aos="fade-up" class="text-md text-start leading-relaxed">
+                HMJ Bahasa Asing berada di bawah Fakultas Bahasa dan Seni (FBS) Universitas Pendidikan Ganesha, Singaraja, Bali. Fakultas ini berkomitmen untuk menghasilkan lulusan yang unggul di bidang kependidikan dan non-kependidikan dengan wawasan global dan berbasis kearifan lokal. 
+                HMJ Bahasa Asing mendukung pengembangan akademik dan profesional mahasiswa melalui kegiatan-kegiatan seperti seminar, pelatihan, dan lomba, yang sering kali diadakan bersama pihak universitas atau fakultas.
+              </p>
+          </div>
 
-              
+          <!-- Right Content (Logo) -->
+          <div data-aos="zoom-in" class="lg:w-1/2 flex hidden lg:block md:block justify-end mt-8 lg:mt-0 lg:pl-8">
+              <div class="bg-white rounded-lg p-5 w-[550px] lg:w-[450px] md:w-[350px] h-full flex items-center justify-center transform lg:translate-x-4">
+                  <img src="img/icon.jpg" class="rounded-lg w-full h-full object-cover" alt="hmj">
+              </div>
           </div>
       </div>
   </div>
-  <footer class="text-white text-center py-4 w-full fixed bottom-0">
-    <p>&copy; HMJ Bahasa Asing 2024 || Develop by PBJ</p>
-  </footer>
 </section>
-<div id="default-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-  <div class="relative w-full h-full max-w-2xl md:h-auto">
-    <!-- Modal content -->
-    <div class="relative bg-white rounded-lg shadow">
-      <!-- Header -->
-      <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-        <h3 class="text-xl font-semibold text-red-600">
-          ATTENTION !<br>
-          <!-- <span class="text-lg font-semibold text-black">
-            Baca dulu biar status keterangan presensi mu ga error lagi
-          </span> -->
-          <br>
-          <span class="text-sm text-black">Version Update </span>
-        </h3>
+<!-- /// -->
+ <!-- Information Section -->
+ <section  class="calc bg-[#0058B8] w-full min-h-screen">
+  <div id="events" class="container mx-auto px-4 py-16">
+    <!-- content -->
+  </div>
+</section>
+  <!-- /// -->
+    <!-- Structure -->
+ <section class="calc bg-[#023E8A] w-full min-h-screen">
+  <div id="member" class="container mx-auto px-4 py-16">
+      <!-- Heading -->
+      <h2 class="text-3xl font-bold text-white text-center mb-12">
+          STRUKTUR HMJ BAHASA ASING 2024
+      </h2>
+
+      <!-- Grid Container -->
+      <div id="structure-data" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card -->
+        
+       
       </div>
-      <!-- Body -->
-      <div class="p-6 space-y-6 max-h-80 overflow-y-auto">
-        <p class="text-left text-black text-md">Hallo Mahasiswa Bahasa Asing ! Selamat datang di presensi realtime location presensi ini menggunakan koordinat lokasi anda sebagai bukti kehadiran, sebelum melakukan presensi pahami terlebih dahulu intruksi berikut ya! </p>
-        <p  class="text-left text-black text-md">Bingung cara close notifikasi ini? baca dulu sampe bawah ok? 😁</p>
-        <ol class="list-decimal">
-          <li class="text-left text-black text-md mb-2">Sebelum mengisi presensi, mahasiswa tidak perlu menyalakan GPS/lokasi secara manual jika anda terlanjur menyalakan GPS/lokasi sebelumnya non aktifkan terlebih dahulu. GPS akan otomatis aktif saat Anda mengirim presensi, ditandai dengan munculnya notifikasi "izinkan akses lokasi". Hal ini bertujuan untuk mendapatkan akses terbaru koordinat lokasi anda berada</li>
-          <li class="text-left text-black text-md mb-2">Pastikan anda sudah berada di FBS ketika mengisi presensi, karena sistem presensi menggunakan koordinat lokasi anda sebagai status kehadiran pada sistem, jika anda sudah mengirim presensi jangan lupa cek kehadiran ya</li>
-          <li class="text-left text-black text-md mb-2">Selalu gunakan browser yg tepat seperti chrome dan browser pendukung lainnya</li>
-          <li class="text-left text-black text-md mb-2">Jika anda sudah mengikuti petunjuk pertama namun keterangan status presensi anda <span class="text-red-600">Tidak Hadir</span> anda bisa mematikan secara manual Gps anda terlebih dahulu kemudian melakukan hapus data cookie pada browser anda, dengan mengklik intruksi berikut <a href="#" class="text-white font-semibold border py-1 px-1 rounded bg-green-600" id="delete-cookie">Intruksi</a>
-            setelah menghapus data cookie pada browser anda bisa mengirim ulang presensi</li>
-          <li class="text-left text-black text-md mb-2">Pastikan selalu jujur dalam mengisi presensi sistem otomatis mendeteksi device yg anda gunakan</li>
-          <li class="text-left text-black text-md mb-2">Kenapa hal ini penting? kasihan juga sekretarisnya biar ga repot lagi edit manual data presensinya 😁 terimakasih sudah membaca dan memahami intruksinya selamat mengisi  presensi 😁</li>
-        </ol>
-      </div>
-      <!-- Footer -->
-      <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-        <button  id="understand-button" data-modal-hide="default-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Oke Aku Ngertii Wii</button>
-      </div>
+  </div>
+</section>
+<!-- Sosmed Content Tiktok  -->
+<section class="calc bg-[#0058B8] w-full min-h-screen">
+  <div id="tiktok" class="container mx-auto px-4 py-16">
+      <!-- Heading -->
+      <h2 class="text-3xl font-bold text-white text-center mb-12">
+        Follow us on Tiktok
+        <i class="fa-brands fa-tiktok ms-1 text-3xl"></i>
+      </h2>
+      <blockquote class="tiktok-embed max-w-[780px] min-w-[288px] mx-auto p-4 bg-white rounded-lg shadow-lg" cite="https://www.tiktok.com/@hmjflundiksha" data-unique-id="hmjflundiksha" data-embed-from="oembed" data-embed-type="creator">
+        <section class="text-center mb-4">
+          <a href="https://www.tiktok.com/@hmjflundiksha?refer=creator_embed" target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold text-lg">
+            @hmjflundiksha
+          </a>
+        </section>
+      </blockquote>
+      <script async onerror="var a=document.createElement('script');a.src='https://iframely.net/files/tiktok-embed.js';document.body.appendChild(a);" src="https://www.tiktok.com/embed.js"></script>
+      <!-- Grid Container -->
+      <!-- <div id="tiktok-videos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      </div> -->
+  </div>
+  <div id="yt" class="container mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold text-white text-center mb-12">
+      Follow us on Youtube
+      <i class="fa-brands fa-youtube ms-1 text-3xl"></i>
+   </h2>
+   <!-- Grid Container -->
+   <div id="youtube" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+   
+   </div>
+  </div>
+</section>
+<footer class="bg-[#023E8A] w-full py-3 mt-10 text-white">
+  <div  class="container mx-auto flex flex-wrap sm:flex-col sm:items-center justify-between px-4 md:px-10">
+    <!-- Logo dan Nama Website -->
+    <div class="flex items-center space-x-4 mb-4 sm:mb-0">
+      <img src="/img/icon.jpg" alt="Logo Website" class="w-10 h-10 rounded-full">
+      <span class="text-md text-white font-semibold">HMJ Bahasa Asing</span>
+    </div>
+    <!-- Copyright -->
+    <div class="text-sm text-white">
+      &copy; 2024 HMJ Bahasa Asing. All rights reserved.
     </div>
   </div>
-</div>
-<!-- Modal -->
- <style>
-  .custom-confirm-button {
-    background-color:green!important;
-    color:white;
-}
-.custom-cancel-button {
-    background-color:red!important;
-    color:white;
-}
-
- </style>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-var resetPermissionLink = document.getElementById('delete-cookie');
-if (resetPermissionLink) {
-resetPermissionLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    
-    // Array gambar - ganti URL ini dengan URL gambar Anda sendiri
-    const images = [
-        '/guide/1.png',
-        '/guide/2.png',
-        '/guide/3.png',
-        '/guide/4.png',
-    ];
-    
-    let currentImageIndex = 0;
-
-    const showNextImage = () => {
-        if (currentImageIndex < images.length) {
-            Swal.fire({
-                imageUrl: images[currentImageIndex],
-                imageAlt: `Slide ${currentImageIndex + 1}`,
-                showCancelButton: true,
-                showConfirmButton: currentImageIndex < images.length - 1,
-                confirmButtonText: 'Lanjut',
-                cancelButtonText: 'Tutup',
-                customClass: {
-                    image: 'swal-image',
-                     confirmButton: 'custom-confirm-button', // Kelas untuk tombol "Lanjut"
-                    cancelButton: 'custom-cancel-button'
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    currentImageIndex++;
-                    showNextImage();
-                }
-            });
-        }
-    };
-    showNextImage();
-});
-}
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-// Mendapatkan elemen modal
-var modalElement = document.getElementById('default-modal');
-
-// Memastikan modal diinisialisasi dengan benar menggunakan Flowbite
-var modal = new window.Modal(modalElement, {
-  backdrop: 'static',  // Modal tidak bisa ditutup dengan mengklik di luar modal
-  keyboard: false      // Modal tidak bisa ditutup dengan tombol escape
-});
-
-// Memeriksa status localStorage
-if (!localStorage.getItem('new-release')) {
-  // Menampilkan modal hanya jika user belum mengerti
-  modal.show();
-}
-
-// Menangani tombol "Mengerti"
-var understandButton = document.getElementById('understand-button'); // Tombol "Mengerti"
-
-// Awalnya sembunyikan tombol "Mengerti"
-understandButton.style.display = 'none';
-
-// Mendapatkan elemen modal yang bisa di-scroll
-var modalContent = document.querySelector('#default-modal .max-h-80');
-
-// Event listener untuk mendeteksi scroll pada modal
-modalContent.addEventListener('scroll', function() {
-  // Cek apakah pengguna sudah mencapai bagian bawah modal
-  if (modalContent.scrollTop + modalContent.clientHeight >= modalContent.scrollHeight) {
-      // Tampilkan tombol "Mengerti" ketika sudah scroll sampai bawah
-      understandButton.style.display = 'inline-block';
-  }
-});
-
-// Ketika tombol "Mengerti" diklik
-understandButton.addEventListener('click', function() {
-  // Simpan status di localStorage bahwa user sudah mengerti
-  localStorage.setItem('new-release', 'true');
-  modal.hide();  // Tutup modal
-});
-});
-
-
-</script>
-<style>
-  .margin {
-    margin-right: 1rem;
-  }
-   @media screen and (max-width: 640px) {
-    .margin {
-      margin-right:0;
-    }
-    .main-content {
-      height: 100vh;
-    }
-    .mobile {
-      margin-top: 3rem;;
-    }
-   }
-</style>
-<script type="module" src="/presensi-fetchlink.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+</footer>
+  <!-- /// -->
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+   <script src="/service/serviceyoutube.js"></script>
+   <script type="module" src="/service/structureFetch.js"></script>
+   <script type="module" src="/service/eventsFetch.js"></script>
+<script type="module" src="service/linkanymore.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
