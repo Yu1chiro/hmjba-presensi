@@ -92,7 +92,7 @@ async function fetchStructureMembers() {
                         <p class="text-white font-medium text-md">
                             ${member.jabatan}
                         </p>
-                        <a href="${member.link}" target="_blank" class="text-white font-bold text-sm hover:underline">
+                        <a href="https://instagram.com/${member.link}" target="_blank" class="text-white font-bold text-sm hover:underline">
                         <i class="fa-brands fa-instagram text-lg"></i>
                         ${member.nama}
                         </a>

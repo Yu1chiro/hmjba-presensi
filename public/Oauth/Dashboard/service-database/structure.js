@@ -142,7 +142,7 @@ async function detailAnggota(memberId) {
         if (snapshot.exists()) {
             const member = snapshot.val();
             Swal.fire({
-                title: 'Detail Anggota',
+                title: 'Detail',
                 html: `
                 <img src="${member.thumbnail}" class="mx-auto mt-4" style="max-width: 300px;" />
                     <p><strong>Nama:</strong> ${member.nama}</p>
@@ -153,7 +153,7 @@ async function detailAnggota(memberId) {
             });
         }
     } catch (error) {
-        console.error('Kesalahan mendapatkan detail anggota:', error);
+        console.error('Kesalahan mendapatkan detail :', error);
     }
 }
 
@@ -168,7 +168,7 @@ async function editAnggota(memberId) {
         if (snapshot.exists()) {
             const member = snapshot.val();
             Swal.fire({
-                title: 'Edit Anggota',
+                title: member.nama,
                 html: `
                     <input id="swal-input-nama" class="swal2-input" placeholder="Nama" value="${member.nama}">
                     <input id="swal-input-jabatan" class="swal2-input" placeholder="Jabatan" value="${member.jabatan}">
@@ -235,11 +235,11 @@ async function hapusAnggota(memberId) {
 // Event Listener untuk Tombol Tambah Anggota
 document.getElementById('add-member').addEventListener('click', () => {
     Swal.fire({
-        title: 'Tambah Anggota Baru',
+        title: 'Tambah Data',
         html: `
             <input id="swal-input-nama" class="swal2-input" placeholder="Nama">
             <input id="swal-input-jabatan" class="swal2-input" placeholder="Jabatan">
-            <input id="swal-input-link" class="swal2-input" placeholder="Link">
+            <input id="swal-input-link" class="swal2-input" placeholder="username instagram tanpa @">
             <input type="file" id="swal-input-thumbnail" class="swal2-input" accept="image/*">
         `,
         focusConfirm: false,

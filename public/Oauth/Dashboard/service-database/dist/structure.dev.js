@@ -210,7 +210,7 @@ function detailAnggota(memberId) {
           if (snapshot.exists()) {
             member = snapshot.val();
             Swal.fire({
-              title: 'Detail Anggota',
+              title: 'Detail',
               html: "\n                <img src=\"".concat(member.thumbnail, "\" class=\"mx-auto mt-4\" style=\"max-width: 300px;\" />\n                    <p><strong>Nama:</strong> ").concat(member.nama, "</p>\n                    <p><strong>Jabatan:</strong> ").concat(member.jabatan, "</p>\n                    <p><strong>Link:</strong> ").concat(member.link, "</p>\n                "),
               showCloseButton: true
             });
@@ -222,7 +222,7 @@ function detailAnggota(memberId) {
         case 11:
           _context5.prev = 11;
           _context5.t0 = _context5["catch"](0);
-          console.error('Kesalahan mendapatkan detail anggota:', _context5.t0);
+          console.error('Kesalahan mendapatkan detail :', _context5.t0);
 
         case 14:
         case "end":
@@ -256,7 +256,7 @@ function editAnggota(memberId) {
           if (snapshot.exists()) {
             member = snapshot.val();
             Swal.fire({
-              title: 'Edit Anggota',
+              title: member.nama,
               html: "\n                    <input id=\"swal-input-nama\" class=\"swal2-input\" placeholder=\"Nama\" value=\"".concat(member.nama, "\">\n                    <input id=\"swal-input-jabatan\" class=\"swal2-input\" placeholder=\"Jabatan\" value=\"").concat(member.jabatan, "\">\n                    <input id=\"swal-input-link\" class=\"swal2-input\" placeholder=\"Link\" value=\"").concat(member.link, "\">\n                    <input type=\"file\" id=\"swal-input-thumbnail\" class=\"swal2-input\" accept=\"image/*\">\n                "),
               focusConfirm: false,
               preConfirm: function preConfirm() {
@@ -388,8 +388,8 @@ function hapusAnggota(memberId) {
 
 document.getElementById('add-member').addEventListener('click', function () {
   Swal.fire({
-    title: 'Tambah Anggota Baru',
-    html: "\n            <input id=\"swal-input-nama\" class=\"swal2-input\" placeholder=\"Nama\">\n            <input id=\"swal-input-jabatan\" class=\"swal2-input\" placeholder=\"Jabatan\">\n            <input id=\"swal-input-link\" class=\"swal2-input\" placeholder=\"Link\">\n            <input type=\"file\" id=\"swal-input-thumbnail\" class=\"swal2-input\" accept=\"image/*\">\n        ",
+    title: 'Tambah Data',
+    html: "\n            <input id=\"swal-input-nama\" class=\"swal2-input\" placeholder=\"Nama\">\n            <input id=\"swal-input-jabatan\" class=\"swal2-input\" placeholder=\"Jabatan\">\n            <input id=\"swal-input-link\" class=\"swal2-input\" placeholder=\"username instagram tanpa @\">\n            <input type=\"file\" id=\"swal-input-thumbnail\" class=\"swal2-input\" accept=\"image/*\">\n        ",
     focusConfirm: false,
     preConfirm: function preConfirm() {
       var nama, jabatan, link, thumbnailFile, thumbnailBase64;
