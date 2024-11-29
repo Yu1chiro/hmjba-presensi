@@ -94,11 +94,11 @@ async function fetchStructureMembers() {
                         </p>
                         <a href="https://instagram.com/${member.link}" target="_blank" class="text-white font-bold text-sm hover:underline">
                         <i class="fa-brands fa-instagram text-lg"></i>
-                        ${member.nama}
+                        ${member.link}
                         </a>
                     </div>
                 `;
-// menambahkan link href presisi
+// revisi perubahan link
                 structureDataContainer.appendChild(memberCard);
             });
         }, (error) => {
