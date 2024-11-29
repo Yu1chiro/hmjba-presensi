@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             ${event.description}
                         </p>
                         <div class="flex flex-wrap space-x-4 pt-4">
-                            <a data-aos="zoom-in" href="${event.link}" class="bg-[#023E8A] hover:bg-[#4361EE] transition-colors duration-300 px-4 py-2 rounded-lg font-bold"> 
+                            <a data-aos="zoom-in" href="${event.link}" class="bg-green-500 hover:bg-green-700 transition-colors duration-300 px-4 py-2 rounded-lg font-bold"> 
                                 Daftar
                             </a>
                         </div>
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </div>
                     </div>
                 `;
-
+// memperbaiki UI 
                 eventsContainer.appendChild(eventElement);
             });
         });
