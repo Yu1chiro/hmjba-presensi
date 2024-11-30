@@ -49,35 +49,43 @@ document.addEventListener('DOMContentLoaded', async () => {
                 title: 'Tambah Event Baru',
                 html: `
                     <div class="space-y-4">
-                    <div class="mb-5">
-                        <label class="text-lg text-start text-xl text-black">Judul Event : </label>
-                        <input id="swal-title" class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400" placeholder="Judul Event">
+                        <div class="mb-5">
+                            <label class="text-lg text-start text-xl text-black">Judul Event : </label>
+                            <input id="swal-title" class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400" placeholder="Judul Event">
+                        </div>
+                        <div class="mb-5">
+                            <label class="text-lg text-start text-xl text-black">Upload Thumbnail : </label>
+                            <input id="swal-thumbnail" type="file" class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400" accept="image/*">
+                        </div>
+                        <div class="mb-5">
+                            <label class="text-lg text-start text-xl text-black">Description : </label>
+                            <div id="editor-container" class="mt-2 border border-gray-300 rounded-md bg-white p-4 shadow-sm"></div>
+                        </div>
+                        <div class="mb-5">
+                            <label class="text-lg text-start text-xl text-black">Link Pendaftaran : </label>
+                            <input id="swal-link" class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400" placeholder="Link">
+                        </div>
                     </div>
-                    <div class="mb-5">
-                        <label class="text-lg text-start text-xl text-black">Upload Thumbnail : </label>
-                        <input id="swal-thumbnail" type="file" class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400" accept="image/*">
-                    </div>
-                    <div class="mb-5">
-                        <label class="text-lg text-start text-xl text-black"> Description : </label>
-                        <div id="editor-container" class="mt-2 border border-gray-300 rounded-md bg-white p-4 shadow-sm"></div>
-                    </div>
-                    <div class="mb-5">
-                        <label class="text-lg text-start text-xl text-black">Link Pendaftaran : </label>
-                        <input id="swal-link" class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400" placeholder="Link">
-                    </div>
-                </div>
-
                 `,
                 showCancelButton: true,
                 confirmButtonText: 'Simpan',
-                didOpen: () => {
-                    CKEDITOR.config.removePlugins = 'notifications,version-check';
-                    CKEDITOR.replace('editor-container');
+                didOpen: async () => {
+                    const editorElement = document.getElementById('editor-container');
+                    ClassicEditor
+                        .create(editorElement, {
+                            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote']
+                        })
+                        .then(editor => {
+                            window.editor = editor;
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
                 },
                 preConfirm: async () => {
                     const title = document.getElementById('swal-title').value;
                     const thumbnailFile = document.getElementById('swal-thumbnail').files[0];
-                    const description = CKEDITOR.instances['editor-container'].getData();
+                    const description = window.editor.getData();
                     const link = document.getElementById('swal-link').value;
 
                     if (!title || !thumbnailFile || !description || !link) {
@@ -111,6 +119,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         Swal.fire('Error!', 'Gagal menginisialisasi halaman: ' + error.message, 'error');
     }
 });
+
 // Helper Function: Konversi Gambar ke Base64
 function convertImageToBase64(file) {
     return new Promise((resolve, reject) => {
@@ -144,12 +153,12 @@ function fetchAndRenderEvents() {
                         </td>
                         <td class="py-3 px-6 text-center">${truncatedDesc}</td>
                         <td class="py-3 px-6 text-center text-blue-500"><a href="${event.link}" target="_blank">${event.link}</a></td>
-                         <td class="py-3 px-6 flex space-x-2">
+                        <td class="py-3 px-6 flex space-x-2">
                             <button onclick="showEventDetails('${key}')" class="bg-blue-500 text-white px-3 py-1 rounded">Detail</button>
                             <button onclick="editEvent('${key}')" class="bg-green-500 text-white px-3 py-1 rounded">Edit</button>
                             <button onclick="deleteEvent('${key}')" class="bg-red-500 text-white px-3 py-1 rounded">Hapus</button>
                         </td>
-                        </tr>
+                    </tr>
                 `;
                 tableBody.innerHTML += row;
             });
@@ -183,78 +192,68 @@ window.editEvent = async (eventId) => {
     Swal.fire({
         title: 'Edit Event',
         html: `
-        <div class="space-y-4">
-    <input id="swal-input-title" 
-           class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400" 
-           placeholder="Judul" 
-           value="${event.title}">
-
-    <div id="swal-input-description" 
-         class="mt-2 border border-gray-300 rounded-md bg-white p-4 shadow-sm">
-        <!-- Konten deskripsi akan dimasukkan di sini -->
-    </div>
-
-    <input id="swal-input-link" 
-           class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400" 
-           placeholder="Link" 
-           value="${event.link}">
-</div>
-
+            <div class="space-y-4">
+                <input id="swal-input-title" 
+                       class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400" 
+                       placeholder="Judul" 
+                       value="${event.title}">
+                <div id="swal-input-description" class="mt-2 border border-gray-300 rounded-md bg-white p-4 shadow-sm"></div>
+                <input id="swal-input-link" 
+                       class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400" 
+                       placeholder="Link" 
+                       value="${event.link}">
+            </div>
         `,
         didOpen: () => {
-            function removeCKEditorNotification() {
-                const interval = setInterval(() => {
-                  const notificationArea = document.querySelector('.cke_notifications_area');
-                  if (notificationArea) {
-                    notificationArea.remove();
-                    console.log('Notifikasi CKEditor berhasil dihapus.');
-                    clearInterval(interval); // Hentikan interval setelah elemen dihapus
-                  }
-                }, 500); // Periksa setiap 500ms
-              }
-              removeCKEditorNotification();
-            CKEDITOR.replace('swal-input-description');
-            CKEDITOR.instances['swal-input-description'].setData(event.description);
+            const descriptionElement = document.getElementById('swal-input-description');
+            ClassicEditor
+                .create(descriptionElement, {
+                    toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote']
+                })
+                .then(editor => {
+                    editor.setData(event.description);
+                    window.editor = editor;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         },
         preConfirm: async () => {
-            const title = document.getElementById('swal-input-title').value;
-            const description = CKEDITOR.instances['swal-input-description'].getData();
-            const link = document.getElementById('swal-input-link').value;
+            const updatedTitle = document.getElementById('swal-input-title').value;
+            const updatedDescription = window.editor.getData();
+            const updatedLink = document.getElementById('swal-input-link').value;
 
             await update(eventRef, {
-                title,
-                description,
-                link
+                title: updatedTitle,
+                description: updatedDescription,
+                link: updatedLink
             });
-
-            Swal.fire('Berhasil!', 'Data event telah diperbarui', 'success');
-            fetchAndRenderEvents();
-            
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire('Berhasil!', 'Event berhasil diperbarui.', 'success');
+            fetchAndRenderEvents(); // Refresh tabel
         }
     });
 };
 
-// Fungsi Hapus Event
+// Fungsi Delete Event
 window.deleteEvent = (eventId) => {
     Swal.fire({
         title: 'Apakah Anda yakin?',
-        text: "Anda tidak dapat mengembalikan data yang dihapus!",
+        text: 'Event ini akan dihapus secara permanen!',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya, Hapus!'
-    }).then(async (result) => {
+        confirmButtonText: 'Ya, hapus!'
+    }).then((result) => {
         if (result.isConfirmed) {
             const eventRef = ref(database, `events/${eventId}`);
-            await remove(eventRef);
-
-            Swal.fire(
-                'Terhapus!',
-                'Data event telah dihapus.',
-                'success'
-            );
-            fetchAndRenderEvents();
+            remove(eventRef).then(() => {
+                Swal.fire('Dihapus!', 'Event berhasil dihapus.', 'success');
+                fetchAndRenderEvents(); // Refresh tabel
+            });
         }
     });
 };

@@ -9,8 +9,7 @@
     <link rel="shortcut icon" href="https://i.postimg.cc/8zHGtLSw/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="Dashboard.css">
     <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
-    <script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
-
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 
 
     <!-- Tailwind CSS (Latest Version) -->
@@ -166,21 +165,21 @@
     <!-- ChartJS (Latest Version) -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
    <script>
-    function removeCKEditorNotification() {
-  const interval = setInterval(() => {
-    const notificationArea = document.querySelector('.cke_notifications_area');
-    if (notificationArea) {
-      notificationArea.remove();
-      console.log('Notifikasi CKEditor berhasil dihapus.');
-      clearInterval(interval); // Hentikan interval setelah elemen dihapus
-    }
-  }, 500); // Periksa setiap 500ms
-}
+//     function removeCKEditorNotification() {
+//   const interval = setInterval(() => {
+//     const notificationArea = document.querySelector('.cke_notifications_area');
+//     if (notificationArea) {
+//       notificationArea.remove();
+//       console.log('Notifikasi CKEditor berhasil dihapus.');
+//       clearInterval(interval); // Hentikan interval setelah elemen dihapus
+//     }
+//   }, 500); // Periksa setiap 500ms
+// }
 
-// Tambahkan event listener pada tombol
-document.getElementById('create-data').addEventListener('click', () => {
-  removeCKEditorNotification();
-});
+// // Tambahkan event listener pada tombol
+// document.getElementById('create-data').addEventListener('click', () => {
+//   removeCKEditorNotification();
+// });
 
    </script>
     <script>

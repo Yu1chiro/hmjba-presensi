@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             Object.values(eventsData).forEach((event) => {
                 const eventElement = document.createElement('div');
-                eventElement.className = 'flex flex-col md:flex-row items-center justify-between space-y-6';
+                eventElement.className = 'flex flex-col md:flex-row items-center py-12 justify-between space-y-6';
 
                 eventElement.innerHTML = `
                     <!-- Left Content -->
